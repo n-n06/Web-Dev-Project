@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary: 	#86cecb;
+    --secondary: #468499;
+    --dark: 	#40444b;
+    --dark-secondary: 	#292b2f;
+    --dark-secondary-hover: #1e2124;
+    --white: white;
+    --light-gray: 	#9a9898;
+}
+
+body {
+    background-color: var(--dark);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--white);
+}
