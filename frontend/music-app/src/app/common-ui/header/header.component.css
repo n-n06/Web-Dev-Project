@@ -1,0 +1,57 @@
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--dark-secondary);
+    justify-content: space-between;
+    align-items: center;
+}
+
+header svg {
+    padding: 0 20px;
+}
+
+
+.search-bar {
+    height: 32px;
+    width: 800px;
+    border-radius: 12px;
+    background-color: var(--dark);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-bar-container {
+    padding: 12px 0px;
+}
+
+.search-bar:focus {
+    border: 1px solid var(--primary);
+}
+
+.search-bar input {
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    margin-right: 24px;
+    width: 100%;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+.sign-in {
+    background-color: transparent;
+    color: white;
+    margin-right: 20px;
+    border: none;
+    font-size: 18px;
+    height: 56px;
+    padding: 0px 12px;
+}
+
+.sign-in:hover {
+    cursor: pointer;
+    background-color: var(--dark-secondary-hover);
+}
