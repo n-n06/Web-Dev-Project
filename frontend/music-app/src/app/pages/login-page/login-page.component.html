@@ -1,17 +1,21 @@
 <section id="login-page-section">
-    <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit($event)">
-        <h1>Login</h1>
-        <label class="login-label">
-            Username
-            <input type="text" class="login-input" formControlName="username">
-        </label>
-        <label class="login-label">
-            Password
-            <input type="password" class="login-input" formControlName="password">
-        </label>
+  <form 
+    class="login-form" 
+    [formGroup]="form" 
+    (ngSubmit)="onSubmit()"
+  >
+    <h1>Login</h1>
+    <label class="login-label">
+      Username
+      <input type="text" class="login-input" formControlName="username" placeholder="Login">
+    </label>
+    <label class="login-label">
+      Password
+      <input type="password" class="login-input" formControlName="password" placeholder="Password">
+    </label>
 
-        <button class="login-button" type="submit">
-            Login
-        </button>
-    </form>
+    <button class="login-button" type="submit">
+      Login
+    </button>
+  </form>
 </section>

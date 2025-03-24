@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HeaderComponent } from './common-ui/header/header.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { canActivateAuth } from './auth/access.guard';
 
 export const routes: Routes = [
     {
@@ -17,5 +19,10 @@ export const routes: Routes = [
                 component: LoginPageComponent
             }
         ]
+    },
+    {
+        path: 'profile',
+        component: ProfilePageComponent,
+        canActivate: [canActivateAuth]
     }
 ];
