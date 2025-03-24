@@ -6,12 +6,14 @@
 
 :root {
     --primary: 	#86cecb;
+    --primary-light: 	#b0f2ef;
     --secondary: #468499;
     --dark: 	#40444b;
     --dark-secondary: 	#292b2f;
     --dark-secondary-hover: #1e2124;
     --white: white;
     --light-gray: 	#9a9898;
+    --dark-shadow: #00000033;
 }
 
 body {

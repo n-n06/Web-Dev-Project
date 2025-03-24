@@ -4,6 +4,7 @@ import { HeaderComponent } from './common-ui/header/header.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { canActivateAuth } from './auth/access.guard';
+import { FooterComponent } from './common-ui/footer/footer.component';
 
 export const routes: Routes = [
     {
@@ -17,6 +18,10 @@ export const routes: Routes = [
             {
                 path: 'login',
                 component: LoginPageComponent
+            },
+            {
+                path: 'register',
+                component: FooterComponent //TODO: Remove this placeholder and change it actual register page
             }
         ]
     },
