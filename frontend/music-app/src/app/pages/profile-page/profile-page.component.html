@@ -60,6 +60,17 @@
         <img [src]="album.image" alt="{{ album.album_name }}" class="album-image" />
         <h3>{{ album.album_name }}</h3>
         <p>Artist: {{ album.artist }}</p>
+    </div>
+    <div class="album-card" *ngFor="let album of albums">
+      <img [src]="album.image" alt="{{ album.album_name }}" class="album-image" />
+      <h3>{{ album.album_name }}</h3>
+      <p>Artist: {{ album.artist }}</p>
+    </div>
+    <div class="album-card" *ngFor="let album of albums">
+      <img [src]="album.image" alt="{{ album.album_name }}" class="album-image" />
+      <h3>{{ album.album_name }}</h3>
+      <p>Artist: {{ album.artist }}</p>
+    </div>
   </div>
   
   <div class="social-media">
@@ -76,5 +87,6 @@
       </a>
     </div>
 </div> 
+</div>
 
 <app-footer></app-footer>

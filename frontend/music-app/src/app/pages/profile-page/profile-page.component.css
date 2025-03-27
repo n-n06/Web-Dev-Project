@@ -69,6 +69,7 @@ h2 {
 
 .album-cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 20px;
   margin: 20px;
@@ -131,11 +132,3 @@ h2 {
     object-fit: contain;
 }
 
-app-footer {
-    position: fixed;
-    left: 50%;         
-    bottom: 10px;      
-    transform: translateX(-50%);  
-    width: auto;       
-    text-align: center;
-}

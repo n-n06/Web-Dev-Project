@@ -22,12 +22,17 @@ export const routes: Routes = [
             {
                 path: 'register',
                 component: FooterComponent //TODO: Remove this placeholder and change it actual register page
+            },
+            {
+                path: 'profile',
+                component: ProfilePageComponent,
+                //canActivate: [canActivateAuth]
             }
         ]
     },
-    {
-        path: 'profile',
-        component: ProfilePageComponent,
-        //canActivate: [canActivateAuth]
-    }
+    // {
+    //     path: 'profile',
+    //     component: ProfilePageComponent,
+    //     //canActivate: [canActivateAuth]
+    // }
 ];

@@ -1,5 +1,11 @@
+:host {
+    margin-top: 40px;
+    
+}
+
 footer {
     text-align: center;
     color: var(--light-gray);
     font-size: 10px;
+    margin-bottom: 20px;
 }
