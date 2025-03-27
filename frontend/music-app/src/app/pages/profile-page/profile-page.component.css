@@ -1,0 +1,141 @@
+h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+h2 {
+    position: absolute;
+    right: 25%;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.profile-page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-image {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 100px;
+    margin-left: 150px;
+}
+
+.profile-image img {
+  width: 30vh;
+  height: 30vh;
+  border-radius: 50%;
+}
+
+#edit-button {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#edit-button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#edit-button svg {
+    margin-left: 3px;
+    margin-bottom: -2px;
+    margin-right: -5px;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.delete-button svg {
+    margin-bottom: -2px;
+}
+
+.album-cards {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin: 20px;
+  margin-top: 90px;
+  margin-right: 100px;
+}
+
+.album-card {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  padding: 10px;
+  width: 200px;
+  height: 300px;
+}
+
+.album-card:hover {
+  transform: scale(1.05);
+}
+
+.album-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    margin-bottom: 10px; 
+}
+
+.user-details {
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: 8px;
+  height: 130px;
+  padding: 10px;
+  position: absolute;
+  top: 60vh;
+  left: 10vw;
+  font-size: larger;
+}
+
+.social-media h2 {
+    position: absolute;
+    left: 11vw;
+    top: 75vh;
+}
+
+.social-media-logos {
+    position: absolute;
+    left: 10vw;
+    top: 85vh; 
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.logo-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+app-footer {
+    position: fixed;
+    left: 50%;         
+    bottom: 10px;      
+    transform: translateX(-50%);  
+    width: auto;       
+    text-align: center;
+}
