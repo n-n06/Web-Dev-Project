@@ -1,0 +1,48 @@
+[  
+    {
+        "artist": "Blackpink",
+        "album_name": "The Album",
+        "image": "https://th.bing.com/th/id/OIP.w6TLrPsf_0u3EmX2w43CKgHaHa?rs=1&pid=ImgDetMain",
+        "release_year": 2020,
+        "tracks": [
+          "How You Like That",
+          "Ice Cream",
+          "Pretty Savage",
+          "Bet You Wanna",
+          "Lovesick Girls",
+          "Crazy Over You",
+          "Love To Hate Me",
+          "You Never Know"
+        ]
+      },
+      {
+        "artist": "Yoasobi",
+        "album_name": "The Book",
+        "image": "https://images.genius.com/a7312887ae604619fad7be36b3bd0c97.1000x1000x1.jpg",
+        "release_year": 2021,
+        "tracks": [
+          "Epilogue",
+          "Encore",
+          "Harujion",
+          "Ano Yume Wo Nazotte",
+          "Probably / Tabun",
+          "Gunjou",
+          "Haruka",
+          "Yoru Ni Kakeru",
+          "Prologue"
+        ]
+      },
+      {
+        "artist": "Creepy Nuts",
+        "album_name": "Ensemble Play",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/f1/2e/7d/f12e7d8b-c430-24e8-c103-93f5f424c598/4547366579345.jpg/1200x1200bf-60.jpg",
+        "release_year": 2022,
+        "tracks": [
+          "Daten",
+          "Baka Majime",
+          "2way nice guy",
+          "Patto Saite Chitte Haini"
+        ]
+      }
+]
+  
