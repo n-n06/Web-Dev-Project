@@ -28,6 +28,6 @@ export const routes: Routes = [
     {
         path: 'profile',
         component: ProfilePageComponent,
-        canActivate: [canActivateAuth]
+        //canActivate: [canActivateAuth]
     }
 ];

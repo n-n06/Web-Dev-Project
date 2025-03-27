@@ -24,8 +24,8 @@ h2 {
 }
 
 .profile-image img {
-  width: 30vh;
-  height: 30vh;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
 }
 
@@ -105,21 +105,21 @@ h2 {
   height: 130px;
   padding: 10px;
   position: absolute;
-  top: 60vh;
-  left: 10vw;
+  top: 540px;
+  left: 160px;
   font-size: larger;
 }
 
 .social-media h2 {
     position: absolute;
-    left: 11vw;
-    top: 75vh;
+    left: 160px;
+    top: 670px;
 }
 
 .social-media-logos {
     position: absolute;
-    left: 10vw;
-    top: 85vh; 
+    left: 155px;
+    top: 760px; 
     display: flex;
     gap: 20px;
     justify-content: center;
