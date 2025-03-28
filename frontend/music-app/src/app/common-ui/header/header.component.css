@@ -53,6 +53,7 @@ header svg:hover {
     font-size: 18px;
     height: 56px;
     padding: 0px 12px;
+    transition: all 0.2s ease-in;
 }
 
 .sign-in:hover {
