@@ -12,8 +12,14 @@
       </div>
   </div>
 
-  <button class="sign-in" (click)="redirectToLogin()">
-      <span>Sign In</span>
-  </button>
+  <div class="account-buttons">
+    <button class="account-button login-button" (click)="redirectToLogin()">
+        <span>Login</span>
+    </button>
+    <button class="account-button register-button" (click)="redirectToRegister()">
+      <span>Register</span>
+    </button>
+  </div>
+
 </header>
 <router-outlet></router-outlet>

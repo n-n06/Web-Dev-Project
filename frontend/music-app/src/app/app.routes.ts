@@ -5,6 +5,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { canActivateAuth } from './auth/access.guard';
 import { FooterComponent } from './common-ui/footer/footer.component';
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,7 @@ export const routes: Routes = [
             },
             {
                 path: 'register',
-                component: FooterComponent //TODO: Remove this placeholder and change it actual register page
+                component: RegistrationPageComponent //TODO: Remove this placeholder and change it actual register page
             },
             {
                 path: 'profile',

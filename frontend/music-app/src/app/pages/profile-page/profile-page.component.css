@@ -63,6 +63,7 @@ button {
 
 #edit-button {
 	background-color: rgba(0, 0, 0, 0.4);
+	transition: all 0.1s ease-in-out;
 	color: white;
 	margin: 0 0 8px 0;
 }
@@ -77,14 +78,35 @@ button {
 	margin-right: -5px;
 }
 
+.pfp-input {
+	text-align: center;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	color: #b6b6b6;
+	display: block;
+}
+
+.pfp-input::-webkit-file-upload-button {
+	color: var(--black);
+	border: 1px solid var(--white);
+	border-radius: 8px;
+	background-color: var(--primary);
+	margin-right: 8px;
+}
+
+.pfp-input::-webkit-file-upload-button:hover {
+	cursor: pointer;
+}
+
 .delete-button {
-	background-color: red;
+	transition: all 0.1s ease-in-out;
+	background-color: var(--warning);
 	color: white;
 	border: none;
 	padding: 5px 10px;
 	cursor: pointer;
-	margin-top: 10px;
-	border-radius: 5px;
+	margin: 10px 0 10px;
+	border-radius: 8px;
 }
 
 .delete-button:hover {
@@ -99,24 +121,25 @@ button {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start; 
-  gap: 20px;
+  	gap: 20px;
 	margin: 40px 0;
 	padding-left: 60px;
 }
 
 .album-card {
-  background-color: var(--dark-secondary);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px var(--dark-shadow);
-  transition: transform 0.3s;
-  padding: 10px;
-  width: 200px;
-  height: 300px;
+	background-color: var(--dark-secondary);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px var(--dark-shadow);
+	transition: transform 0.3s;
+	padding: 10px;
+	width: 200px;
+	height: 300px;
 }
 
 .album-card:hover {
-  transform: scale(1.05);
+	cursor: pointer;
+	transform: scale(1.05);
 }
 
 .album-image {
@@ -129,15 +152,15 @@ button {
 
 .user-details {
 	width: 320px;
-  background-color: rgba(0, 0, 0, 0.55);
-  border-radius: 8px;
-  padding: 10px;
-  font-size: larger;
+	background-color: var(--dark-secondary);
+	border-radius: 8px;
+	padding: 10px;
+	font-size: larger;
 }
 
 .profile-left input {
 	font-size: 16px;
-	margin-bottom: 8px;
+	margin-bottom: 0px;
 	background-color: var(--dark-secondary);
 	color: var(--white);
 }
@@ -146,11 +169,18 @@ button {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	gap: 12px;
+	gap: 0 12px;
 }
 
 .user-actions-buttons button {
-	margin: 4px 0 0 0;
+	color: var(--white);
+	background-color: var(--secondary);
+	margin: 8px 0  0;
+	transition: all 0.1s ease-in-out;
+}
+
+.user-actions-buttons button:hover {
+	background-color: var(--secondary-light);
 }
 
 .social-media-logos {

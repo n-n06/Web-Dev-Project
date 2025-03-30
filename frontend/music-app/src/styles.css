@@ -8,13 +8,18 @@
     --primary: 	#86cecb;
     --primary-light: 	#b0f2ef;
     --secondary: #468499;
+    --secondary-light: #60a6be;
+    --warning: rgb(118, 15, 15);
     --dark: 	#40444b;
     --dark-secondary: 	#292b2f;
     --dark-secondary-hover: #1e2124;
     --dark-third: 	#2f3136;
+    --dark-shadow: #00000033;
+    --black: rgb(15, 14, 18);
     --white: white;
     --light-gray: 	#9a9898;
-    --dark-shadow: #00000033;
+    
+
 }
 
 body {

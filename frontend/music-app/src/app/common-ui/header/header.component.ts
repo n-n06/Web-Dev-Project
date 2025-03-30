@@ -18,4 +18,8 @@ export class HeaderComponent {
   redirectToLogin() {
     this.router.navigate(['/login']);
   }
+
+  redirectToRegister() {
+    this.router.navigate(['/register']);
+  }
 }
