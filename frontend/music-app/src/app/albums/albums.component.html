@@ -1,0 +1,6 @@
+    <div class="album-card" (click)="goToDetailPage(album.id)">
+        <img [src]="album.image" alt="{{ album.album_name }}" class="album-image" />
+        <h3>{{ album.album_name }}</h3>
+        <p>Artist: {{ album.artist }}</p>
+    </div>
+    

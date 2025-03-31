@@ -1,0 +1,27 @@
+<h1>Album Details</h1>
+
+<div class="all-details">
+  <div class="left-side">
+    <h2>{{ album.album_name }}</h2>
+    <img [src]="album.image" alt="{{ album.album_name }}" />
+  </div>
+
+  <div *ngIf="album" class="album-details">
+      <p>Album ID: {{ album.id }}</p>
+      <p>Title: {{ album.album_name }}</p>
+      <p>Artist: {{ album.artist }}</p>
+      <p>Release Year: {{ album.release_year }}</p>
+    
+      <h3>Tracks</h3>
+      <ul>
+        <li *ngFor="let track of album.tracks">{{ track }}</li>
+      </ul>
+  </div>
+
+  <img id="artist-image" [src]="album.artist_image" alt="{{ album.artist }}" />
+</div>
+
+<div class="actions-container">
+  <button (click)="goBack()">Return</button>
+  <a routerLink="/">Go to Home</a>
+</div>

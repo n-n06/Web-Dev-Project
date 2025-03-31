@@ -6,6 +6,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { canActivateAuth } from './auth/access.guard';
 import { FooterComponent } from './common-ui/footer/footer.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { DetailsPageComponent } from './pages/details-page/details-page.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,10 @@ export const routes: Routes = [
                 path: 'profile',
                 component: ProfilePageComponent,
                 //canActivate: [canActivateAuth]
+            },
+            {
+                path: 'albums/:id', 
+                component: DetailsPageComponent,
             }
         ]
     },

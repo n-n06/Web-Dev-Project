@@ -1,6 +1,8 @@
 [  
     {
+        "id": 1,
         "artist": "Blackpink",
+        "artist_image": "https://i.pinimg.com/originals/86/00/b2/8600b2fd60233ed32e7ed21f153feeb1.jpg",
         "album_name": "The Album",
         "image": "https://th.bing.com/th/id/OIP.w6TLrPsf_0u3EmX2w43CKgHaHa?rs=1&pid=ImgDetMain",
         "release_year": 2020,
@@ -16,7 +18,9 @@
         ]
       },
       {
+        "id": 2,
         "artist": "Yoasobi",
+        "artist_image": "https://www.musicman.co.jp/wp-content/uploads/2024/02/main-31.jpg",
         "album_name": "The Book",
         "image": "https://images.genius.com/a7312887ae604619fad7be36b3bd0c97.1000x1000x1.jpg",
         "release_year": 2021,
@@ -33,7 +37,111 @@
         ]
       },
       {
+        "id": 3,
         "artist": "Creepy Nuts",
+        "artist_image": "https://www.thefirsttimes.jp/admin/wp-content/uploads/2022/08/20220816-YA-171403.gif",
+        "album_name": "Ensemble Play",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/f1/2e/7d/f12e7d8b-c430-24e8-c103-93f5f424c598/4547366579345.jpg/1200x1200bf-60.jpg",
+        "release_year": 2022,
+        "tracks": [
+          "Daten",
+          "Baka Majime",
+          "2way nice guy",
+          "Patto Saite Chitte Haini"
+        ]
+      },
+      {
+        "id": 4,
+        "artist": "Blackpink",
+        "artist_image": "https://i.pinimg.com/originals/86/00/b2/8600b2fd60233ed32e7ed21f153feeb1.jpg",
+        "album_name": "The Album",
+        "image": "https://th.bing.com/th/id/OIP.w6TLrPsf_0u3EmX2w43CKgHaHa?rs=1&pid=ImgDetMain",
+        "release_year": 2020,
+        "tracks": [
+          "How You Like That",
+          "Ice Cream",
+          "Pretty Savage",
+          "Bet You Wanna",
+          "Lovesick Girls",
+          "Crazy Over You",
+          "Love To Hate Me",
+          "You Never Know"
+        ]
+      },
+      {
+        "id": 5,
+        "artist": "Yoasobi",
+        "artist_image": "https://www.musicman.co.jp/wp-content/uploads/2024/02/main-31.jpg",
+        "album_name": "The Book",
+        "image": "https://images.genius.com/a7312887ae604619fad7be36b3bd0c97.1000x1000x1.jpg",
+        "release_year": 2021,
+        "tracks": [
+          "Epilogue",
+          "Encore",
+          "Harujion",
+          "Ano Yume Wo Nazotte",
+          "Probably / Tabun",
+          "Gunjou",
+          "Haruka",
+          "Yoru Ni Kakeru",
+          "Prologue"
+        ]
+      },
+      {
+        "id": 6,
+        "artist": "Creepy Nuts",
+        "artist_image": "https://www.thefirsttimes.jp/admin/wp-content/uploads/2022/08/20220816-YA-171403.gif",
+        "album_name": "Ensemble Play",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/f1/2e/7d/f12e7d8b-c430-24e8-c103-93f5f424c598/4547366579345.jpg/1200x1200bf-60.jpg",
+        "release_year": 2022,
+        "tracks": [
+          "Daten",
+          "Baka Majime",
+          "2way nice guy",
+          "Patto Saite Chitte Haini"
+        ]
+      },
+      {
+        "id": 7,
+        "artist": "Blackpink",
+        "artist_image": "https://i.pinimg.com/originals/86/00/b2/8600b2fd60233ed32e7ed21f153feeb1.jpg",
+        "album_name": "The Album",
+        "image": "https://th.bing.com/th/id/OIP.w6TLrPsf_0u3EmX2w43CKgHaHa?rs=1&pid=ImgDetMain",
+        "release_year": 2020,
+        "tracks": [
+          "How You Like That",
+          "Ice Cream",
+          "Pretty Savage",
+          "Bet You Wanna",
+          "Lovesick Girls",
+          "Crazy Over You",
+          "Love To Hate Me",
+          "You Never Know"
+        ]
+      },
+      {
+        "id": 8,
+        "artist": "Yoasobi",
+        "artist_image": "https://www.musicman.co.jp/wp-content/uploads/2024/02/main-31.jpg",
+        "album_name": "The Book",
+        "image": "https://images.genius.com/a7312887ae604619fad7be36b3bd0c97.1000x1000x1.jpg",
+        "release_year": 2021,
+        "tracks": [
+          "Epilogue",
+          "Encore",
+          "Harujion",
+          "Ano Yume Wo Nazotte",
+          "Probably / Tabun",
+          "Gunjou",
+          "Haruka",
+          "Yoru Ni Kakeru",
+          "Prologue"
+        ]
+      },
+      {
+        "id": 9,
+        "artist": "Creepy Nuts",
+        "artist_image": "https://www.thefirsttimes.jp/admin/wp-content/uploads/2022/08/20220816-YA-171403.gif",
         "album_name": "Ensemble Play",
         "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/f1/2e/7d/f12e7d8b-c430-24e8-c103-93f5f424c598/4547366579345.jpg/1200x1200bf-60.jpg",
         "release_year": 2022,

@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
+import { Album } from '../../models/album.model';
+import { AlbumsService } from '../../albums.service';
+import { AlbumsComponent } from '../../albums/albums.component';
 
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent],
+  imports: [CommonModule, FormsModule, FooterComponent, AlbumsComponent],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css'
 })
@@ -18,19 +20,30 @@ export class ProfilePageComponent {
   email: string = 'myname@gmail.com';
   usernameTemp: string = this.username;  
   emailTemp: string = this.email;
-  albums: any[] = [];
 
-  constructor(private http: HttpClient) {
+  albumList: Album[] = [];
+  filteredAlbumList: Album[] = [];
+
+  constructor(private albumsService: AlbumsService) {
     const savedProfileImage = localStorage.getItem('profileImage');
     if (savedProfileImage) {
       this.profileImage = savedProfileImage;
     }
+
+    this.albumsService.getAll().subscribe((albumList: Album[]) => {
+      this.albumList = albumList;
+      this.filteredAlbumList = albumList;
+    });
   }
 
-  ngOnInit(): void {
-    this.http.get<any[]>('test_albums.json').subscribe((data) => {
-      this.albums = data;
-    });
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredAlbumList = this.albumList;
+      return;
+    }
+    this.filteredAlbumList = this.albumList.filter((Album) =>
+      Album?.album_name.toLowerCase().includes(text.toLowerCase()),
+    );
   }
 
   toggleEdit() {

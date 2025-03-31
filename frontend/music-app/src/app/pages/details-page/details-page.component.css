@@ -1,0 +1,66 @@
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.all-details {
+    display: flex;
+}
+
+.all-details h2 {
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+#artist-image {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    margin-top: 80px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.left-side img {
+    width: 300px;
+    margin-left: 80px;
+}
+
+.album-details {
+    margin: 100px;
+    margin-left: 200px;
+    font-size: large;
+}
+
+.album-details h3 {
+    margin: 10px;
+    margin-top: 50px;
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 5px; 
+    align-items: flex-start;
+    margin: 20px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.actions-container button {
+	background-color: transparent;
+    border: 1px solid white;
+	color: white;
+	padding: 5px 10px;
+	cursor: pointer;
+	margin: 10px 0 10px;
+	border-radius: 8px;
+}
+
+.actions-container a {
+    color: rgb(207, 207, 255);
+}
