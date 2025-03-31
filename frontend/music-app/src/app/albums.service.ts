@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Album } from './models/album.model';
 import { Observable } from 'rxjs';
-import { Album } from '../models/album.model';
 
 // here api from django can be used instead
 const baseUrl = 'test_albums.json'

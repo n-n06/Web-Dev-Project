@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { Album } from '../../models/album.model';
+import { AlbumsService } from '../../albums.service';
 import { AlbumsComponent } from '../../albums/albums.component';
-import { AlbumsService } from '../../services/albums.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -24,9 +24,7 @@ export class ProfilePageComponent {
   albumList: Album[] = [];
   filteredAlbumList: Album[] = [];
 
-  private albumsService = inject(AlbumsService);
-
-  constructor() {
+  constructor(private albumsService: AlbumsService) {
     const savedProfileImage = localStorage.getItem('profileImage');
     if (savedProfileImage) {
       this.profileImage = savedProfileImage;

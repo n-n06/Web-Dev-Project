@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { AlbumsService } from '../../albums.service';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { AlbumsService } from '../../services/albums.service';
 
 @Component({
   selector: 'app-details-page',
@@ -12,11 +12,10 @@ import { AlbumsService } from '../../services/albums.service';
 })
 export class DetailsPageComponent {
   album: any;
-  
-  private albumsService = inject(AlbumsService);
 
   constructor(
-    private route: ActivatedRoute,
+    private route: ActivatedRoute,  
+    private albumsService: AlbumsService,
     private location: Location
   ) {}
 
