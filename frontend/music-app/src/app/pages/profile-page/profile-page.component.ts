@@ -16,9 +16,9 @@ import { AlbumsComponent } from '../../albums/albums.component';
 export class ProfilePageComponent {
   profileImage: string | null = null;
   isEditing: boolean = false;
-  username: string = 'myname'; 
+  username: string = 'myname';
   email: string = 'myname@gmail.com';
-  usernameTemp: string = this.username;  
+  usernameTemp: string = this.username;
   emailTemp: string = this.email;
 
   albumList: Album[] = [];
@@ -30,7 +30,7 @@ export class ProfilePageComponent {
       this.profileImage = savedProfileImage;
     }
 
-    this.albumsService.getAll().subscribe((albumList: Album[]) => {
+    this.albumsService.getAllAlbums().subscribe((albumList: Album[]) => {
       this.albumList = albumList;
       this.filteredAlbumList = albumList;
     });
@@ -64,12 +64,12 @@ export class ProfilePageComponent {
   }
 
   deleteProfileImage(): void {
-    this.profileImage = null; 
+    this.profileImage = null;
 
     localStorage.removeItem('profileImage');
     const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
     if (fileInput) {
-      fileInput.value = ''; 
+      fileInput.value = '';
     }
     this.isEditing = false;
   }
@@ -81,18 +81,18 @@ export class ProfilePageComponent {
   saveChanges() {
     if (!this.usernameTemp.trim() || !this.emailTemp.trim()) {
       alert('Username and email fields cannot be empty!');
-      return;  
+      return;
     }
 
     this.username = this.usernameTemp;
     this.email = this.emailTemp;
     console.log('Changes saved:', { username: this.username, email: this.email });
-    this.isEditing = false;  
+    this.isEditing = false;
   }
 
   cancelChanges() {
     this.usernameTemp = this.username;
     this.emailTemp = this.email;
-    this.isEditing = false;  
+    this.isEditing = false;
   }
 }
