@@ -85,16 +85,69 @@ The backend provides RESTful APIs for interacting with the music discovery syste
 
 Logic related to obtaining album information will probably be implemented using an external REST API like the Spotify API.
 Logic related to creating album packs would be implemented by us.
+
+## Frontend overview
+### Pages
+```
+pages
+  │-- details-page
+  │-- home-page
+  │-- login-page
+  │-- profile-page
+  │-- registration-page
+```
+
+### Routing 
+Still in WIP status as auth backend has not been fully implemented and connected.
+```ts
+export const routes: Routes = [
+    {
+        path: '',
+        component: HeaderComponent,
+        children: [
+            {
+                path: '',
+                component: HomePageComponent
+            },
+            {
+                path: 'login',
+                component: LoginPageComponent
+            },
+            {
+                path: 'register',
+                component: RegistrationPageComponent //TODO: Remove this placeholder and change it actual register page
+            },
+            {
+                path: 'profile',
+                component: ProfilePageComponent,
+                canActivate: [canActivateAuth]
+            },
+            {
+                path: 'albums/:id', 
+                component: DetailsPageComponent,
+            }
+        ]
+    }
+]
+```
+
+### Authentication
+Authentication is implemented using the JWT technology. To apply it, we use a separate service, an interceptor for utiliity functionality and a guard to protect certain router from unauthorized users.
+
+Authentication logic on the front side is separated into a foler `auth` where the following files are stored:
+- `auth.interceptor.ts` - logic related to adding access token to request headers, refreshing the token
+- `auth.interface.ts` - models user for authentication only
+- `auth.serivice.ts` - all necessary auth functions - `login`, `register`, `logout`
+
 ## Data Models (Interfaces for Frontend)
 ### Album
 ```ts
 interface Album {
   id: number;
-  title: string;
   artist: string;
-  coverImageUrl: string;
-  releaseDate: string;
-  genre: string;
+  album_name: string;
+  image: string;
+  genre: Genre[];
 }
 ```
 
@@ -107,7 +160,7 @@ interface AlbumPack {
   creator: User;
   albums: Album[];
   likes: number;
-  createdAt: string;
+  created_at: string;
 }
 ```
 ### User
@@ -116,7 +169,15 @@ interface User {
   id: number;
   username: string;
   email: string;
-  avatarUrl?: string;
+  avatar_url?: string;
+}
+```
+### Genre
+```typescript
+export interface Genre {
+  id: number;
+  name: string;
+  description?: string;
 }
 ```
 
