@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { Album } from '../../models/album.model';
-import { AlbumsService } from '../../albums.service';
 import { AlbumsComponent } from '../../albums/albums.component';
+import { AlbumsService } from '../../services/albums.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -34,6 +34,10 @@ export class ProfilePageComponent {
       this.albumList = albumList;
       this.filteredAlbumList = albumList;
     });
+  }
+
+  ngOnInit() {
+    this.profileImage = null;
   }
 
   filterResults(text: string) {

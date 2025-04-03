@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { AlbumsService } from '../../albums.service';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { AlbumsService } from '../../services/albums.service';
 
 @Component({
   selector: 'app-details-page',
@@ -29,7 +29,7 @@ export class DetailsPageComponent {
   ngOnInit(): void {
     const albumId = +this.route.snapshot.paramMap.get('id')!;
 
-    this.albumsService.getAll().subscribe((albums) => {
+    this.albumsService.getAllAlbums().subscribe((albums) => {
       this.album = albums.find((album) => album.id === albumId);
 
       const savedDescription = localStorage.getItem(`description_${albumId}`);

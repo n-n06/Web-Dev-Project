@@ -9,6 +9,7 @@
       
       <div class="image-container">
         <img [src]="profileImage" alt="Profile Image" *ngIf="profileImage; else defaultImage" />
+
         <ng-template #defaultImage>
           <img src="default-profile.png" alt="Default Profile" />
         </ng-template>

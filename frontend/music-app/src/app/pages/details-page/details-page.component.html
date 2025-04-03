@@ -1,14 +1,23 @@
 <h1>Album Details</h1>
 
 <div class="all-details">
-  <div class="left-side">
-    <h2>{{ album.album_name }}</h2>
-    <img [src]="album.image" alt="{{ album.album_name }}" />
-    <p><strong>Album ID:</strong> {{ album.id }}</p>
-    <p><strong>Title:</strong> {{ album.album_name }}</p>
-    <p><strong>Artist:</strong> {{ album.artist }}</p>
-    <p><strong>Release Year:</strong> {{ album.release_year }}</p>
-  </div>
+  <section class="left-section">
+    <div class="actions-container">
+      <button (click)="goBack()">Return</button>
+      <a routerLink="/">Go to Home</a>
+    </div>   
+    
+    <div class="left-side">
+      <h2>{{ album.album_name }}</h2>
+      <img [src]="album.image" alt="{{ album.album_name }}" />
+      <p><strong>Album ID:</strong> {{ album.id }}</p>
+      <p><strong>Title:</strong> {{ album.album_name }}</p>
+      <p><strong>Artist:</strong> {{ album.artist }}</p>
+      <p><strong>Release Year:</strong> {{ album.release_year }}</p>
+    </div>
+  </section>
+
+
 
   <div *ngIf="album" class="album-details">
     
@@ -44,9 +53,6 @@
   <img id="artist-image" [src]="album.artist_image" alt="{{ album.artist }}" />
 </div>
 
-<div class="actions-container">
-  <button (click)="goBack()">Return</button>
-  <a routerLink="/">Go to Home</a>
-</div>
+
 
 <app-footer></app-footer>
