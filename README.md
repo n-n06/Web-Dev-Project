@@ -182,7 +182,7 @@ export interface Genre {
 ```
 
 ## Authors
-- Torekhan Ernur 🖥️🏌️
+- Toleukhan Ernur 🖥️🏌️
 - Yamane Yumi 🌐👩‍🎨
 - Zhantuar Nursultan 💻🎹
 ## License
