@@ -6,11 +6,11 @@ header {
     align-items: center;
 }
 
-header svg {
+header .header-icon {
     padding: 0 20px;
 }
 
-header svg:hover {
+header .header-icon:hover {
     cursor: pointer;
 }
 

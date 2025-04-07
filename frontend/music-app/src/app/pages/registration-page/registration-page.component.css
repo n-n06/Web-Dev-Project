@@ -40,6 +40,7 @@
 }
 
 .reg-button {
+    cursor: pointer;
     font-size: 16px;
     background-color: var(--primary);
     margin: 20px 0;

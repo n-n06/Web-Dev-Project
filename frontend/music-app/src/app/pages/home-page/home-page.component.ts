@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FooterComponent } from "../../common-ui/footer/footer.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,5 +10,9 @@ import { FooterComponent } from "../../common-ui/footer/footer.component";
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
+  router = inject(Router);
 
+  redirectToLogin() {
+    this.router.navigate(['/login'])
+  }
 }

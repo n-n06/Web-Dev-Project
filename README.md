@@ -80,7 +80,7 @@ The backend provides RESTful APIs for interacting with the music discovery syste
 | `/api/packs/`           | GET    | Get all album packs                                     |
 | `/api/packs/`           | POST   | Create a new album pack                                 |
 | `/api/packs/{id}/`      | GET    | Get a specific album pack                               |
-| `/api/packs/{id}/`      | UPDATE | Update album pack information (name, description, etc.) |
+| `/api/packs/{id}/`      | PUT | Update album pack information (name, description, etc.) |
 | `/api/packs/{id}/like/` | POST   | Like an album pack                                      |
 
 Logic related to obtaining album information will probably be implemented using an external REST API like the Spotify API.
