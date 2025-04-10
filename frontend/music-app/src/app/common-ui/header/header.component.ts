@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,8 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class HeaderComponent {
   router : Router = inject(Router);
+  authService : AuthService= inject(AuthService);
+
 
   redirectToHome() {
     this.router.navigate(['']);
@@ -21,5 +24,9 @@ export class HeaderComponent {
 
   redirectToRegister() {
     this.router.navigate(['/register']);
+  }
+  
+  redirectToProfile() {
+    this.router.navigate(['/profile']);
   }
 }

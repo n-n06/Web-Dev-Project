@@ -3,12 +3,12 @@ import { AuthService } from "./auth.service"
 import { CanActivateFn, Router, UrlTree } from "@angular/router";
 
 export const canActivateAuth : CanActivateFn = () => {
-    const isLoggeIn = inject(AuthService).isAuthenticated;
+    const isLoggeIn = inject(AuthService).isAuthenticated();
 
-    if (isLoggeIn()) {
+    if (isLoggeIn) {
         return true;
     }
 
-    return inject(Router).createUrlTree(['/login']);
+    return inject(Router).navigate(['/login']);
 
 }

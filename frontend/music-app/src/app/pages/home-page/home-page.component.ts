@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FooterComponent } from "../../common-ui/footer/footer.component";
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,9 +11,14 @@ import { Router } from '@angular/router';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-  router = inject(Router);
+  router : Router = inject(Router);
+  authService : AuthService = inject(AuthService);
 
   redirectToLogin() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
+  }
+
+  redirectToSearch() {
+    this.router.navigate(['/search'])
   }
 }

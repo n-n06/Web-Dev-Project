@@ -7,6 +7,7 @@ import { canActivateAuth } from './auth/access.guard';
 import { FooterComponent } from './common-ui/footer/footer.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
     {
@@ -28,11 +29,15 @@ export const routes: Routes = [
             {
                 path: 'profile',
                 component: ProfilePageComponent,
-                //canActivate: [canActivateAuth]
+                canActivate: [canActivateAuth]
             },
             {
-                path: 'albums/:id', 
+                path: 'albums/:id',
                 component: DetailsPageComponent,
+            },
+            {
+                path: '**',
+                component: PageNotFoundComponent
             }
         ]
     },

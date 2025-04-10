@@ -48,8 +48,9 @@ header .header-icon:hover {
 .account-buttons {
     margin-right: 20px;
     display: flex;
+    align-items: center;
     flex-direction: row;
-    gap: 0px;
+    gap: 12px;
 }
 
 .account-button  {
@@ -65,4 +66,11 @@ header .header-icon:hover {
 .account-button:hover {
     cursor: pointer;
     background-color: var(--dark-secondary-hover);
+}
+
+.profile-image {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
 }

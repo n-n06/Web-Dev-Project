@@ -9,5 +9,6 @@ export interface UserLogin {
 }
 
 export interface UserRegistration extends UserLogin {
-    email: string
+    email: string,
+    password2: string
 }

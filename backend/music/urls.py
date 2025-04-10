@@ -1,10 +1,10 @@
-from django.urls import path
-from .views import (LoginView, LogoutView, ArtistListCreateView, ArtistDetailView,
+from django.urls import path, include
+
+from .views import (ArtistListCreateView, ArtistDetailView,
                    AlbumListCreateView, AlbumDetailView, UserProfileView)
 
 urlpatterns = [
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('auth/', include('auth.urls')),
 
     path('artists/', ArtistListCreateView.as_view(), name='artist-list'),
     path('artists/<int:pk>/', ArtistDetailView.as_view(), name='artist-detail'),

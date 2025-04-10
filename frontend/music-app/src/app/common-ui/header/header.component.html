@@ -9,13 +9,30 @@
       </div>
   </div>
 
+
   <div class="account-buttons">
-    <button class="account-button login-button" (click)="redirectToLogin()">
+    @if (this.authService.isAuthenticated()) {
+      
+      <img 
+        src="default-profile.png" 
+        alt="Default Profile" 
+        class="profile-image"
+        (click)="redirectToProfile()"
+      />
+      
+      <button class="account-button logout-button" (click)="this.authService.logout()">
+        <span>Logout</span>
+      </button>
+    
+    } @else {
+      <button class="account-button login-button" (click)="redirectToLogin()">
         <span>Login</span>
-    </button>
-    <button class="account-button register-button" (click)="redirectToRegister()">
-      <span>Register</span>
-    </button>
+      </button>
+      <button class="account-button register-button" (click)="redirectToRegister()">
+        <span>Register</span>
+      </button>
+    }
+
   </div>
 
 </header>

@@ -13,7 +13,7 @@ export class AuthService {
   router : Router = inject(Router);
   cookie : CookieService = inject(CookieService);
 
-  apiUrl : string = 'localhost:0000/auth/'
+  apiUrl : string = 'http://127.0.0.1:8000/api/auth/'
   accessToken : string | null = '';
   refreshToken : string | null= ''; //it should redirect us back to the login page after rega
 
@@ -28,11 +28,11 @@ export class AuthService {
       this.accessToken = this.cookie.get('accessToken');
       this.refreshToken = this.cookie.get('refreshToken');
     }
-    return !!this.accessToken; 
+    return !!this.accessToken;
   }
 
   register(payload: UserRegistration) {
-    return this.http.post(this.apiUrl, payload).pipe( //TODO:  add actual url later
+    return this.http.post(`${this.apiUrl}register/`, payload).pipe( //TODO:  add actual url later
       tap(
         () => this.registered = true
       )
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   login(payload: UserLogin) {
-    return this.http.post<TokenResponse>(this.apiUrl, payload) //TODO: add actual url later
+    return this.http.post<TokenResponse>(`${this.apiUrl}token/`, payload) //TODO: add actual url later
       .pipe(
         tap(res => {
           this.saveTokens(res);
@@ -49,8 +49,8 @@ export class AuthService {
   }
 
   refreshAuthToken() {
-    return this.http.post<TokenResponse>(`${this.apiUrl}refresh`, { //TODO: add actual url later
-      refresh_token: this.refreshToken
+    return this.http.post<TokenResponse>(`${this.apiUrl}token/refresh/`, { //TODO: add actual url later
+      refresh: this.refreshToken
     }).pipe(
       tap(
         res => this.saveTokens(res)
@@ -63,6 +63,10 @@ export class AuthService {
   }
 
   logout() {
+    this.http.post(`${this.apiUrl}token/logout/`, {
+      refresh: this.refreshToken
+    });
+
     this.cookie.deleteAll();
     this.accessToken = null;
     this.refreshToken = null;
