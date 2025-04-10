@@ -8,6 +8,7 @@ import { FooterComponent } from './common-ui/footer/footer.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 export const routes: Routes = [
     {
@@ -27,9 +28,13 @@ export const routes: Routes = [
                 component: RegistrationPageComponent //TODO: Remove this placeholder and change it actual register page
             },
             {
+                path: 'search', 
+                component: SearchPageComponent,
+            },
+            {
                 path: 'profile',
                 component: ProfilePageComponent,
-                canActivate: [canActivateAuth]
+                // canActivate: [canActivateAuth]
             },
             {
                 path: 'albums/:id',

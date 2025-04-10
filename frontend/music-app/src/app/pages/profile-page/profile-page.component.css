@@ -196,3 +196,47 @@ button {
 	object-fit: contain;
 }
 
+.search-bar {
+    height: 32px;
+    width: 800px;
+    border-radius: 12px;
+    background-color: var(--dark-secondary);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-bar svg {
+    color: white;
+}
+
+.search-bar-container {
+    padding: 12px 0px;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.search-bar:focus {
+    border: 1px solid var(--primary);
+}
+
+.search-bar input {
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    margin-right: 24px;
+    width: 100%;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
