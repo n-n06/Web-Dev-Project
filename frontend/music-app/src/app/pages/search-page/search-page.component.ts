@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AlbumsComponent } from '../../albums/albums.component';
 import { Album } from '../../models/album.model';
 import { AlbumsService } from '../../services/albums.service';
+import { FooterComponent } from '../../common-ui/footer/footer.component';
 
 @Component({
   selector: 'app-search-page',
-  imports: [CommonModule, AlbumsComponent],
+  imports: [CommonModule, AlbumsComponent, FooterComponent],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.css'
 })
