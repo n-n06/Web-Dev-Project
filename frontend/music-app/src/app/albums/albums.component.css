@@ -20,3 +20,36 @@
       border-radius: 8px; 
       margin-bottom: 10px; 
   }
+
+  button {
+    color: white;
+    border-radius: 20px;
+    padding: 6px 12px; 
+    font-size: 14px; 
+    font-weight: bold;
+    border: none; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  #save-button {
+    background-color: rgb(57, 143, 114);
+    margin-left: 140px;
+  }
+  
+  #save-button:hover {
+    background-color: rgb(46, 116, 92); 
+    transform: translateY(-2px); 
+  }
+  
+  #remove-button {
+    background-color: rgb(200, 50, 50);
+    margin-left: 160px;
+  }
+  
+  #remove-button:hover {
+    background-color: rgb(170, 20, 20); 
+    transform: translateY(-2px);
+  }
+  

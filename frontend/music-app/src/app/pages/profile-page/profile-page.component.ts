@@ -29,15 +29,16 @@ export class ProfilePageComponent {
     if (savedProfileImage) {
       this.profileImage = savedProfileImage;
     }
-
-    this.albumsService.getAllAlbums().subscribe((albumList: Album[]) => {
-      this.albumList = albumList;
-      this.filteredAlbumList = albumList;
-    });
   }
 
   ngOnInit() {
     this.profileImage = null;
+
+    const savedAlbums = localStorage.getItem('savedAlbums');
+    if (savedAlbums) {
+      this.filteredAlbumList = JSON.parse(savedAlbums);
+      this.albumList = this.filteredAlbumList;
+    }
   }
 
   filterResults(text: string) {
@@ -99,4 +100,17 @@ export class ProfilePageComponent {
     this.emailTemp = this.email;
     this.isEditing = false;
   }
+
+  onAlbumRemoved(albumId: number): void {
+    const userConfirmed = confirm(`Are you sure you want to delete this album with ID: ${albumId}?`);
+
+    if (userConfirmed) {
+      this.filteredAlbumList = this.filteredAlbumList.filter(album => album.id !== albumId);
+      this.albumList = this.albumList.filter(album => album.id !== albumId);
+      localStorage.setItem('savedAlbums', JSON.stringify(this.filteredAlbumList));
+    } else {
+      console.log('Album deletion cancelled');
+      alert('Album deletion cancelled');
+    }
+  }  
 }
