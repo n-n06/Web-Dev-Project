@@ -29,5 +29,9 @@ export class AlbumsService {
     return this.http.patch(`${baseUrl}api/albums/${id}`, {payload});
   }
 
+  public searchAlbums(query: string) {
+    return this.http.get<Album[]>(`http://localhost:8000/api/albums/search/?q=${query}`);
+  }
+
 
 }

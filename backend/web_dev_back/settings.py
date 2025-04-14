@@ -16,11 +16,15 @@ import os
 
 load_dotenv()
 
+# PostgreSQL DB Setup
 DB_NAME = os.getenv('DB_NAME')
 DB_USER = os.getenv('DB_USER')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
+
+# External API Setup - API key
+LAST_FM_API_KEY = os.getenv('LAST_FM_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,6 +60,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
 
     'corsheaders',
+    'apps.albums',
+    'apps.artists',
 ]
 
 REST_FRAMEWORK = {

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Album } from '../models/album.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+import { Album } from '../../models/album.model';
 
 @Component({
   selector: 'app-albums',
@@ -13,19 +14,19 @@ export class AlbumsComponent {
   @Input() album!: Album;
   @Input() enableSave: boolean = false;
   @Input() enableRemove: boolean = false;
-  @Output() removed = new EventEmitter<number>()
+  @Output() removed = new EventEmitter<string>()
 
   constructor(private router: Router) { }
 
-  goToDetailPage(albumId: number): void {
-    this.router.navigate(['/albums', albumId]);  
+  goToDetailPage(albumId: string): void {
+    this.router.navigate(['/albums', albumId]);
   }
 
   saveAlbum(event: MouseEvent): void {
-    event.stopPropagation(); 
+    event.stopPropagation();
     const savedAlbums = JSON.parse(localStorage.getItem('savedAlbums') || '[]');
-    
-    const alreadySaved = savedAlbums.some((a: Album) => a.id === this.album.id);
+
+    const alreadySaved = savedAlbums.some((a: Album) => a.album_name === this.album.album_name); //TODO: fix = add new interface
     if (!alreadySaved) {
       savedAlbums.push(this.album);
       localStorage.setItem('savedAlbums', JSON.stringify(savedAlbums));
@@ -37,6 +38,6 @@ export class AlbumsComponent {
 
   removeAlbum(event: MouseEvent): void {
     event.stopPropagation();
-    this.removed.emit(this.album.id);
+    this.removed.emit(this.album.album_name);
   }
 }

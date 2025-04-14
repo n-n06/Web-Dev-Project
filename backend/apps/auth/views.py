@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
-from music.serializers import UserSerializer
+from ..users.serializers import UserSerializer
 from .serializers import RegistrationSerializer
 
 # Create your views here.

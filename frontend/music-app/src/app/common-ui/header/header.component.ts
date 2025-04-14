@@ -25,8 +25,13 @@ export class HeaderComponent {
   redirectToRegister() {
     this.router.navigate(['/register']);
   }
-  
+
   redirectToProfile() {
     this.router.navigate(['/profile']);
+  }
+
+  redirectToSearch(query: string) {
+    const route = `/search?search=${query}`
+    this.router.navigateByUrl(route);
   }
 }

@@ -5,25 +5,25 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search header-icon" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
               </svg>
-          <input type="text" placeholder="Search">
+          <input type="text" placeholder="Search" (keyup.enter)="redirectToSearch(headerSearch.value)" #headerSearch>
       </div>
   </div>
 
 
   <div class="account-buttons">
     @if (this.authService.isAuthenticated()) {
-      
-      <img 
-        src="default-profile.png" 
-        alt="Default Profile" 
+
+      <img
+        src="default-profile.png"
+        alt="Default Profile"
         class="profile-image"
         (click)="redirectToProfile()"
       />
-      
+
       <button class="account-button logout-button" (click)="this.authService.logout()">
         <span>Logout</span>
       </button>
-    
+
     } @else {
       <button class="account-button login-button" (click)="redirectToLogin()">
         <span>Login</span>

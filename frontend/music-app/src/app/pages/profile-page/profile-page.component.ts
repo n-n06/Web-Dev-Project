@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { Album } from '../../models/album.model';
-import { AlbumsComponent } from '../../albums/albums.component';
 import { AlbumsService } from '../../services/albums.service';
+import { AlbumsComponent } from '../../common-ui/albums/albums.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -101,16 +101,16 @@ export class ProfilePageComponent {
     this.isEditing = false;
   }
 
-  onAlbumRemoved(albumId: number): void {
+  onAlbumRemoved(albumId: string): void {
     const userConfirmed = confirm(`Are you sure you want to delete this album with ID: ${albumId}?`);
 
     if (userConfirmed) {
-      this.filteredAlbumList = this.filteredAlbumList.filter(album => album.id !== albumId);
-      this.albumList = this.albumList.filter(album => album.id !== albumId);
+      this.filteredAlbumList = this.filteredAlbumList.filter(album => album.album_name !== albumId);
+      this.albumList = this.albumList.filter(album => album.album_name !== albumId);
       localStorage.setItem('savedAlbums', JSON.stringify(this.filteredAlbumList));
     } else {
       console.log('Album deletion cancelled');
       alert('Album deletion cancelled');
     }
-  }  
+  }
 }
