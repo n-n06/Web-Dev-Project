@@ -1,0 +1,6 @@
+<h2>{{ pack.title }}</h2>
+<section class="album-cards">
+  <app-albums *ngFor="let album of pack.albums" [album]="album" [enableRemove]="true"
+  (removed)="removeAlbumFromPack($event)">></app-albums>
+</section>
+<app-footer></app-footer>

@@ -10,7 +10,20 @@
 </div>
 
   <section class="album-cards">
-    <app-albums *ngFor="let album of filteredAlbumList" [album]="album" [enableSave]="true"></app-albums>
+    <app-albums *ngFor="let album of filteredAlbumList" [album]="album" [enableSave]="true" (saveClick)="openSaveModal(album)"></app-albums>
   </section>
+
+  <div *ngIf="showPackModal" class="modal">
+    <div class="modal-content">
+      <h3>Choose Album Pack</h3>
+      <ul>
+        <li *ngFor="let pack of albumPacks" (click)="saveToPack(selectedAlbum, pack.id)">
+          {{ pack.title }}
+        </li>
+      </ul>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
+  </div>  
+  
 
 <app-footer></app-footer>

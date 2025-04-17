@@ -1,0 +1,13 @@
+.album-pack-card {
+    border: 1px solid white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .album-pack-card:hover {
+    transform: scale(1.02);
+  }
+  

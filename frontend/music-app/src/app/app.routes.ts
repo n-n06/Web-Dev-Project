@@ -9,6 +9,7 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { AlbumPackPageComponent } from './pages/album-pack-page/album-pack-page.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
                 path: 'profile',
                 component: ProfilePageComponent,
                 // canActivate: [canActivateAuth]
+            },
+            {
+                path: 'packs/:id',
+                component: AlbumPackPageComponent,
             },
             {
                 path: 'albums/:id',
