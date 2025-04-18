@@ -13,7 +13,7 @@ export class AlbumPackComponent {
 
   constructor(private router: Router) { }
 
-  goToPackPage(packId: string): void {
+  goToPackPage(packId: number): void {
     this.router.navigate(['/packs', packId]);
   }
 }
