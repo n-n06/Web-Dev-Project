@@ -5,11 +5,15 @@ import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { Album } from '../../models/album.model';
 import { AlbumsService } from '../../services/albums.service';
 import { AlbumsComponent } from '../../common-ui/albums/albums.component';
+import { AlbumPack } from '../../models/interfaces/album-pack';
+import { Router } from '@angular/router';
+import { AlbumPackComponent } from '../../common-ui/album-pack/album-pack.component';
+import { AlbumPackService } from '../../services/album-pack.service';
 
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent, AlbumsComponent],
+  imports: [CommonModule, FormsModule, FooterComponent, AlbumPackComponent],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css'
 })
@@ -21,35 +25,47 @@ export class ProfilePageComponent {
   usernameTemp: string = this.username;
   emailTemp: string = this.email;
 
-  albumList: Album[] = [];
-  filteredAlbumList: Album[] = [];
+  // albumList: Album[] = [];
+  // filteredAlbumList: Album[] = [];
 
-  constructor(private albumsService: AlbumsService) {
+  albumPacks: AlbumPack[] = [];
+
+  constructor(private router: Router, private albumsService: AlbumsService, private albumPackService: AlbumPackService) {
     const savedProfileImage = localStorage.getItem('profileImage');
     if (savedProfileImage) {
       this.profileImage = savedProfileImage;
     }
+
+    this.albumPackService.getAllAlbumPacks().subscribe((packs) => this.albumPacks = packs);
   }
 
   ngOnInit() {
     this.profileImage = null;
 
-    const savedAlbums = localStorage.getItem('savedAlbums');
-    if (savedAlbums) {
-      this.filteredAlbumList = JSON.parse(savedAlbums);
-      this.albumList = this.filteredAlbumList;
+    const stored = localStorage.getItem('albumPacks');
+    if (stored) {
+      this.albumPacks = JSON.parse(stored);
+    } else {
+      this.albumPackService.getAllAlbumPacks().subscribe(packs => this.albumPacks = packs);
     }
+
+
+    // const savedAlbums = localStorage.getItem('savedAlbums');
+    // if (savedAlbums) {
+    //   this.filteredAlbumList = JSON.parse(savedAlbums);
+    //   this.albumList = this.filteredAlbumList;
+    // }
   }
 
-  filterResults(text: string) {
-    if (!text) {
-      this.filteredAlbumList = this.albumList;
-      return;
-    }
-    this.filteredAlbumList = this.albumList.filter((Album) =>
-      Album?.album_name.toLowerCase().includes(text.toLowerCase()),
-    );
-  }
+  // filterResults(text: string) {
+  //   if (!text) {
+  //     this.filteredAlbumList = this.albumList;
+  //     return;
+  //   }
+  //   this.filteredAlbumList = this.albumList.filter((Album) =>
+  //     Album?.album_name.toLowerCase().includes(text.toLowerCase()),
+  //   );
+  // }
 
   toggleEdit() {
     this.isEditing = !this.isEditing;
@@ -101,16 +117,16 @@ export class ProfilePageComponent {
     this.isEditing = false;
   }
 
-  onAlbumRemoved(albumId: string): void {
-    const userConfirmed = confirm(`Are you sure you want to delete this album with ID: ${albumId}?`);
+  // onAlbumRemoved(albumId: string): void {
+  //   const userConfirmed = confirm(`Are you sure you want to delete this album with ID: ${albumId}?`);
 
-    if (userConfirmed) {
-      this.filteredAlbumList = this.filteredAlbumList.filter(album => album.album_name !== albumId);
-      this.albumList = this.albumList.filter(album => album.album_name !== albumId);
-      localStorage.setItem('savedAlbums', JSON.stringify(this.filteredAlbumList));
-    } else {
-      console.log('Album deletion cancelled');
-      alert('Album deletion cancelled');
-    }
-  }
+  //   if (userConfirmed) {
+  //     this.filteredAlbumList = this.filteredAlbumList.filter(album => album.album_name !== albumId);
+  //     this.albumList = this.albumList.filter(album => album.album_name !== albumId);
+  //     localStorage.setItem('savedAlbums', JSON.stringify(this.filteredAlbumList));
+  //   } else {
+  //     console.log('Album deletion cancelled');
+  //     alert('Album deletion cancelled');
+  //   }
+  // }
 }

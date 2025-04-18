@@ -2,11 +2,11 @@ import { User } from "./user";
 import { Album } from "../album.model";
 
 export interface AlbumPack {
-  id: number;
+  id: string;
   title: string;
-  description: string;
-  creator: User;
+  // description: string;
+  // creator: User;
   albums: Album[];
-  likes: number;
-  created_at: string;
+  // likes: number;
+  // created_at: string;
 }

@@ -4,7 +4,7 @@ import { inject } from '@angular/core';
 import { AlbumPack } from '../models/interfaces/album-pack';
 import { Observable } from 'rxjs';
 
-const baseUrl = '';
+const baseUrl = 'test_album_packs.json';
 
 @Injectable({
   providedIn: 'root'

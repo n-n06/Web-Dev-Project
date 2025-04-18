@@ -15,6 +15,7 @@ export class AlbumsComponent {
   @Input() enableSave: boolean = false;
   @Input() enableRemove: boolean = false;
   @Output() removed = new EventEmitter<string>()
+  @Output() saveClick = new EventEmitter<Album>();
 
   constructor(private router: Router) { }
 
@@ -24,16 +25,18 @@ export class AlbumsComponent {
 
   saveAlbum(event: MouseEvent): void {
     event.stopPropagation();
-    const savedAlbums = JSON.parse(localStorage.getItem('savedAlbums') || '[]');
+    this.saveClick.emit(this.album);
+    
+    // const savedAlbums = JSON.parse(localStorage.getItem('savedAlbums') || '[]');
 
-    const alreadySaved = savedAlbums.some((a: Album) => a.album_name === this.album.album_name); //TODO: fix = add new interface
-    if (!alreadySaved) {
-      savedAlbums.push(this.album);
-      localStorage.setItem('savedAlbums', JSON.stringify(savedAlbums));
-      alert('Album saved!');
-    } else {
-      alert('Album already saved.');
-    }
+    // const alreadySaved = savedAlbums.some((a: Album) => a.album_name === this.album.album_name); //TODO: fix = add new interface
+    // if (!alreadySaved) {
+    //   savedAlbums.push(this.album);
+    //   localStorage.setItem('savedAlbums', JSON.stringify(savedAlbums));
+    //   alert('Album saved!');
+    // } else {
+    //   alert('Album already saved.');
+    // }
   }
 
   removeAlbum(event: MouseEvent): void {

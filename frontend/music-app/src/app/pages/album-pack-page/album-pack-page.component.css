@@ -1,0 +1,12 @@
+.album-cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start; 
+  	gap: 20px;
+	margin: 40px 0;
+	padding-left: 60px;
+}
+
+h2 {
+    margin: 40px;
+}

@@ -83,7 +83,7 @@
 
   
   <div class="profile-right">
-    <h2>Saved albums</h2>
+    <!-- <h2>Saved albums</h2>
 
     <div class="search-bar-container">
       <div class="search-bar">
@@ -99,7 +99,10 @@
     <section class="album-cards">
       <app-albums *ngFor="let album of filteredAlbumList" [album]="album" [enableRemove]="true"
       (removed)="onAlbumRemoved($event)"></app-albums>
-    </section>
+    </section> -->
+
+    <h2>Album Packs</h2>
+    <app-album-pack *ngFor="let pack of albumPacks" [pack]="pack"></app-album-pack>
 
   </div>
 
