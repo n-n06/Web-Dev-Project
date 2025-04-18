@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   register(payload: UserRegistration) {
-    return this.http.post(`${this.apiUrl}register/`, payload).pipe( //TODO:  add actual url later
+    return this.http.post(`${this.apiUrl}register/`, payload).pipe( 
       tap(
         () => this.registered = true
       )
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   login(payload: UserLogin) {
-    return this.http.post<TokenResponse>(`${this.apiUrl}token/`, payload) //TODO: add actual url later
+    return this.http.post<TokenResponse>(`${this.apiUrl}token/`, payload) 
       .pipe(
         tap(res => {
           this.saveTokens(res);
@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   refreshAuthToken() {
-    return this.http.post<TokenResponse>(`${this.apiUrl}token/refresh/`, { //TODO: add actual url later
+    return this.http.post<TokenResponse>(`${this.apiUrl}token/refresh/`, { 
       refresh: this.refreshToken
     }).pipe(
       tap(

@@ -26,24 +26,27 @@ export const routes: Routes = [
             },
             {
                 path: 'register',
-                component: RegistrationPageComponent //TODO: Remove this placeholder and change it actual register page
+                component: RegistrationPageComponent 
             },
             {
                 path: 'search', 
                 component: SearchPageComponent,
+                canActivate: [canActivateAuth]
             },
             {
                 path: 'profile',
                 component: ProfilePageComponent,
-                // canActivate: [canActivateAuth]
+                canActivate: [canActivateAuth]
             },
             {
                 path: 'packs/:id',
                 component: AlbumPackPageComponent,
+                canActivate: [canActivateAuth]
             },
             {
                 path: 'albums/:id',
                 component: DetailsPageComponent,
+                canActivate: [canActivateAuth]
             },
             {
                 path: '**',

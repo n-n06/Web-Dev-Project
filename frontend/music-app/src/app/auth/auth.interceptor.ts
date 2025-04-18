@@ -10,6 +10,14 @@ export const authTokenInterceptorFn : HttpInterceptorFn = (
     next : HttpHandlerFn
 ) => {
   const authService : AuthService = inject(AuthService);
+
+  const excludeUrls = ['/register', '/login'];
+
+  if (excludeUrls.some(url => req.url.includes(url))) {
+    return next(req); // If we try to register and login, we skip the interceptor
+  }
+
+
   const accessToken = authService.accessToken;
 
   if (!accessToken) {
@@ -22,7 +30,7 @@ export const authTokenInterceptorFn : HttpInterceptorFn = (
 
   return next(addTokenToHeaders(req, accessToken)).pipe(
     catchError(err => {
-      if (err.status === 403) {
+      if (err.status === 401) {
         return refreshTokenInterceptor(authService, req, next);
       }
 

@@ -10,22 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='track',
-            name='album',
-        ),
-        migrations.RemoveField(
-            model_name='userprofile',
-            name='favorite_artists',
-        ),
-        migrations.AlterUniqueTogether(
-            name='track',
-            unique_together=None,
-        ),
-        migrations.RemoveField(
-            model_name='userprofile',
-            name='user',
-        ),
         migrations.DeleteModel(
             name='Album',
         ),

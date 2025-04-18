@@ -6,9 +6,8 @@ import {
   ReactiveFormsModule, 
   Validators 
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
-import { NgClass, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-registration-page',
@@ -29,7 +28,8 @@ export class RegistrationPageComponent {
   form = new FormGroup({
     username : new FormControl<string | null>(null, Validators.required),
     email: new FormControl<string | null>(null, Validators.required),
-    password : new FormControl<string | null>(null, Validators.required)
+    password : new FormControl<string | null>(null, Validators.required),
+    password2: new FormControl<string | null>(null, Validators.required)
   });
 
   onSubmit() {
