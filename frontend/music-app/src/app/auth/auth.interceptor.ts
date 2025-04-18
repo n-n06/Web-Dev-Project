@@ -11,9 +11,9 @@ export const authTokenInterceptorFn : HttpInterceptorFn = (
 ) => {
   const authService : AuthService = inject(AuthService);
 
-  const excludeUrls = ['/register', '/login'];
+  const excludeUrls = ['/register/', '/token/'];
 
-  if (excludeUrls.some(url => req.url.includes(url))) {
+  if (excludeUrls.some(url => req.url.endsWith(url))) {
     return next(req); // If we try to register and login, we skip the interceptor
   }
 

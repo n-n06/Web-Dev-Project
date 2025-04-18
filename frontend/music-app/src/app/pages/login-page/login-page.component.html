@@ -16,11 +16,27 @@
       <input type="password" class="login-input" formControlName="password" placeholder="Password">
     </label>
 
-    <button class="login-button" type="submit">
-      Login
+    <button class="login-button" type="submit" [disabled]="isLoading">
+      @if (!isLoading) {
+        Login
+      } @else {
+        <span class="spinner"></span>
+      }
     </button>
     <hr>
     <span>Don't have an account? <a routerLink="../register" class="register-link">Sign Up</a></span>
+
+
+    @if (this.isLoginFailed && this.loginErrorMessages.length) {
+      <div [class]="
+      {
+          'login-msg-red' : true
+      }">
+        @for (item of loginErrorMessages; track $index) {
+          <span>{{item}}</span>
+        }
+      </div>
+    } 
 
   </form>
 </section>

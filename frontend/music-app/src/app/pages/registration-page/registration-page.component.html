@@ -1,7 +1,7 @@
 <section id="reg-page-section">
-    <form 
-      class="reg-form" 
-      [formGroup]="form" 
+    <form
+      class="reg-form"
+      [formGroup]="form"
       (ngSubmit)="onSubmit()"
     >
       <img src="app-logo.png" alt="logo" width="32">
@@ -23,26 +23,35 @@
         Password
         <input type="password" class="reg-input" formControlName="password2" placeholder="Repeat Password">
       </label>
-  
+
       <button class="reg-button" type="submit">
-        Register
+        @if (!isLoading) {
+          Register
+        } @else {
+          <span class="spinner"></span>
+        }
       </button>
-      
-      @if (this.authService.isRegistered() && this.submitted) {
+
+
+
+      @if (this.registrationSuccess) {
         <div [class]="
         {
             'reg-msg-green' : true,
             'reg-msg-red' : false,
         }">
-            {{ this.message }}
+            {{ this.successMessage }}
         </div>
-      } @else if (!this.authService.isRegistered() && this.submitted) {
+      } @else if (!registrationSuccess && errorMessages.length) {
         <div [class]="
         {
             'reg-msg-green' : false,
             'reg-msg-red' : true,
         }">
-            {{ this.message }}
+          @for (item of this.errorMessages; track $index) {
+            <span>{{item}}</span>
+          }
+            
         </div>
       }
 

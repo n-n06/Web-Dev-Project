@@ -19,9 +19,6 @@ class RegistrationView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegistrationSerializer
 
-    def post(self, request, *args, **kwargs):
-        print("Request data:", request.data)
-        return super().post(request, *args, **kwargs)
 
 # class LoginView(ObtainAuthToken):
 #     def post(self, request, *args, **kwargs):

@@ -10,6 +10,7 @@ urlpatterns = [
     # path('artists/<int:pk>/', ArtistDetailView.as_view(), name='artist-detail'),
 
     path('albums/', include('apps.albums.urls')),
+    path('packs/', include('apps.packs.urls')),
     # path('albums/', AlbumListCreateView.as_view(), name='album-list'),
     # path('albums/<int:pk>/', AlbumDetailView.as_view(), name='album-detail'),
     #
