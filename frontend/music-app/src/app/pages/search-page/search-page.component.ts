@@ -60,7 +60,7 @@ export class SearchPageComponent {
     this.newPackName = '';
   }
 
-  saveToPack(album: Album, packId: string) {
+  saveToPack(album: Album, packId: number) {
     const packIndex = this.albumPacks.findIndex(p => p.id === packId);
   
     if (packIndex !== -1) {

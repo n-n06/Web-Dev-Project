@@ -21,7 +21,7 @@ export class AlbumPackPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id')!;
   
     if (id) {
       const stored = localStorage.getItem('albumPacks');

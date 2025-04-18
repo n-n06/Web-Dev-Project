@@ -1,18 +1,18 @@
 [
     {
-      "id": "1",
+      "id": 1,
       "title": "Favorites"
     },
     {
-      "id": "2",
+      "id": 2,
       "title": "Recommended"
     },
     {
-      "id": "3",
+      "id": 3,
       "title": "New Releases"
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Top Picks"
     }
 ]

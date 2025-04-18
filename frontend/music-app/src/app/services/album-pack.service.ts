@@ -4,7 +4,7 @@ import { inject } from '@angular/core';
 import { AlbumPack } from '../models/interfaces/album-pack';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'test_album_packs.json';
+const baseUrl = 'http://127.0.0.1:8000/packs/';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AlbumPackService {
     return this.http.delete(`${baseUrl}api/packs/${id}`);
   }
 
-  public updateAlbumPack(id: string, payload: AlbumPack) {
-    return this.http.patch(`${baseUrl}api/packs/${id}`, {payload});
+  public updateAlbumPack(id: number, payload: AlbumPack) {
+    return this.http.patch(`${baseUrl}${id}/`, {payload});
   }
 }

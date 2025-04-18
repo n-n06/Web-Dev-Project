@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'apps.albums',
     'apps.artists',
+    'apps.packs',
 ]
 
 REST_FRAMEWORK = {
