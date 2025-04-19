@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AlbumPack } from '../models/interfaces/album-pack';
 import { Observable } from 'rxjs';
+import { Album } from '../models/album.model';
 
 const baseUrl = 'http://127.0.0.1:8000/packs/';
 
@@ -17,8 +18,8 @@ export class AlbumPackService {
     return this.http.get<AlbumPack[]>(baseUrl);
   }
 
-  public getAlbumPackById(id: string): Observable<AlbumPack> {
-    return this.http.get<AlbumPack>(baseUrl + 'api/packs/' + `${id}`);
+  public getAlbumPackById(id: number): Observable<AlbumPack> {
+    return this.http.get<AlbumPack>(`${baseUrl}${id}/`);
   }
 
   public createAlbumPack(payload: AlbumPack) {
@@ -29,7 +30,7 @@ export class AlbumPackService {
     return this.http.delete(`${baseUrl}api/packs/${id}`);
   }
 
-  public updateAlbumPack(id: number, payload: AlbumPack) {
-    return this.http.patch(`${baseUrl}${id}/`, {payload});
-  }
+  public updateAlbumPack(id: number, payload: { albums: Album[] }) {
+    return this.http.patch<AlbumPack>(`${baseUrl}${id}/`, payload);
+  }  
 }

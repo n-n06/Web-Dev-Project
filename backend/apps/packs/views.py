@@ -6,6 +6,8 @@ from django.http import JsonResponse
 from .models import AlbumPack
 from .serializers import AlbumPackSerializer
 
+from django.views.decorators.csrf import csrf_exempt
+
 def album_packs_list(request):
     if request.method == 'GET':
         album_packs = AlbumPack.objects.all()
@@ -20,7 +22,7 @@ def album_packs_list(request):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
-
+@csrf_exempt
 def album_pack_detail(request, album_pack_id=None):
     try:
         album_pack = AlbumPack.objects.get(pk=album_pack_id)
@@ -37,6 +39,14 @@ def album_pack_detail(request, album_pack_id=None):
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+    
+    elif request.method == 'PATCH':
+        data = json.loads(request.body)  
+        serializer = AlbumPackSerializer(instance=album_pack, data=data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=200)
         return JsonResponse(serializer.errors, status=400)
 
     elif request.method == 'DELETE':

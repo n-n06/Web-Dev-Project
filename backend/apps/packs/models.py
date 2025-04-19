@@ -1,6 +1,6 @@
 from django.db import models
 
-# from backend.apps.albums.models import Album
+# from apps.albums.models import Album
 
 # Create your models here.
 class AlbumPack(models.Model):
@@ -11,6 +11,10 @@ class AlbumPack(models.Model):
     # albums = models.ManyToManyField(Album, related_name='album_packs')
     # likes = models.PositiveIntegerField(default=0)
     # created_at = models.DateTimeField(auto_now_add=True)
+
+
+    # just for testing purposes
+    albums = models.JSONField(default=list)
 
     def __str__(self):
         return self.title

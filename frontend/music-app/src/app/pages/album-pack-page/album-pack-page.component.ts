@@ -24,44 +24,40 @@ export class AlbumPackPageComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id')!;
   
     if (id) {
-      const stored = localStorage.getItem('albumPacks');
-      if (stored) {
-        const packs = JSON.parse(stored);
-        const found = packs.find((p: AlbumPack) => p.id === id);
-        if (found) {
-          this.pack = found;
-        } else {
-          console.warn('No pack found with id:', id);
-        }
-      } else {
-        this.albumPackService.getAllAlbumPacks().subscribe((packs) => {
-          const found = packs.find((pack) => pack.id === id);
+      this.albumPackService.getAlbumPackById(id).subscribe({
+        next: (found) => {
           if (found) {
             this.pack = found;
           } else {
             console.warn('No pack found with id:', id);
           }
-        });
-      }
+        },
+        error: (err) => {
+          console.error('Error fetching pack:', err);
+          alert('Failed to load album pack.');
+        }
+      });
     }
-  }
+  }  
 
   removeAlbumFromPack(albumId: string) {
     const userConfirmed = confirm(`Are you sure you want to remove this album from the pack?`);
-  
     if (!userConfirmed || !this.pack) return;
   
     this.pack.albums = this.pack.albums.filter(album => album.album_name !== albumId);
   
-    const stored = localStorage.getItem('albumPacks');
-    if (stored) {
-      const packs = JSON.parse(stored);
-      const packIndex = packs.findIndex((p: AlbumPack) => p.id === this.pack.id);
-      if (packIndex !== -1) {
-        packs[packIndex] = this.pack;
-        localStorage.setItem('albumPacks', JSON.stringify(packs));
-      }
-    }
-  }  
+    const updatedAlbums = this.pack.albums;
   
+    this.albumPackService.updateAlbumPack(this.pack.id, { albums: updatedAlbums })
+      .subscribe({
+        next: (updatedPack) => {
+          this.pack = updatedPack;
+        },
+        error: (err) => {
+          console.error('Error updating pack:', err);
+          alert('Failed to remove album from pack.');
+        }
+      });
+  }  
+
 }

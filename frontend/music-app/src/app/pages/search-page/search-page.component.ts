@@ -61,46 +61,34 @@ export class SearchPageComponent {
   }
 
   saveToPack(album: Album, packId: number) {
-    const packIndex = this.albumPacks.findIndex(p => p.id === packId);
+    const pack = this.albumPacks.find(p => p.id === packId);
   
-    if (packIndex !== -1) {
-      const existingPack = this.albumPacks[packIndex];
-  
-      const alreadyExists = existingPack.albums.some(a => a.id === album.id);
-      if (alreadyExists) {
-        alert('Album already exists in this pack!');
-        this.closeModal();
-        return;
-      }
-  
-      existingPack.albums.push(album);
-  
-      localStorage.setItem('albumPacks', JSON.stringify(this.albumPacks));
-  
-      alert('Album saved to pack!');
-      this.closeModal();
+    if (!pack) {
+      alert('Pack not found!');
+      return;
     }
-  }
   
-
-  // for backend
-  // saveToPack(album: Album, packId: string) {
-  //   const pack = this.albumPacks.find(p => p.id === packId);
-  //   if (pack) {
-  //     const alreadyExists = pack.albums.some(a => a.id === album.id);
-  //     if (alreadyExists) {
-  //       alert('Album already exists in this pack!');
-  //       this.closeModal();
-  //       return;
-  //     }
+    const alreadyExists = pack.albums.some(a => a.id === album.id);
+    if (alreadyExists) {
+      alert('Album already exists in this pack!');
+      this.closeModal();
+      return;
+    }
   
-  //     pack.albums.push(album);
+    const updatedAlbums = [...(pack.albums || []), album];
   
-  //     this.albumPackService.updateAlbumPack(packId, pack).subscribe(() => {
-  //       alert('Album saved to pack!');
-  //       this.closeModal();
-  //     });
-  //   }
-  // }
+    this.albumPackService.updateAlbumPack(packId, { albums: updatedAlbums })
+      .subscribe({
+        next: (updatedPack) => {
+          pack.albums.push(album);  
+          alert('Album saved to pack!');
+          this.closeModal();
+        },
+        error: (err) => {
+          console.error('Error updating pack:', err);
+          alert('Failed to save album to pack.');
+        }
+      });
+  }  
   
 }
