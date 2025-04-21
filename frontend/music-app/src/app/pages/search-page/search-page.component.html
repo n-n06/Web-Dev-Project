@@ -16,6 +16,16 @@
   <div *ngIf="showPackModal" class="modal">
     <div class="modal-content">
       <h3>Choose Album Pack</h3>
+
+      <div class="new-pack">
+        <input
+          type="text"
+          placeholder="New pack name"
+          [(ngModel)]="newPackName"
+        />
+        <button (click)="createNewPack()">Create</button>
+      </div>
+
       <ul>
         <li *ngFor="let pack of albumPacks" (click)="saveToPack(selectedAlbum, pack.id)">
           {{ pack.title }}

@@ -8,6 +8,7 @@ from .serializers import AlbumPackSerializer
 
 from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def album_packs_list(request):
     if request.method == 'GET':
         album_packs = AlbumPack.objects.all()

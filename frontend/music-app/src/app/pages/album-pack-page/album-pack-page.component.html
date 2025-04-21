@@ -3,4 +3,7 @@
   <app-albums *ngFor="let album of pack.albums" [album]="album" [enableRemove]="true"
   (removed)="removeAlbumFromPack($event)">></app-albums>
 </section>
+
+<button id="delete-button" (click)="deleteAlbumPack()">Delete Pack</button>
+
 <app-footer></app-footer>

@@ -60,4 +60,21 @@ export class AlbumPackPageComponent implements OnInit {
       });
   }  
 
+  deleteAlbumPack() {
+    const userConfirmed = confirm(`Are you sure you want to delete this album pack?`);
+    if (!userConfirmed || !this.pack) return;
+
+    this.albumPackService.deleteAlbumPack(this.pack.id)
+      .subscribe({
+        next: () => {
+          alert('Album pack deleted successfully!');
+          window.location.href = '/profile';  
+        },
+        error: (err) => {
+          console.error('Error deleting album pack:', err);
+          alert('Failed to delete album pack.');
+        }
+      });
+  }
+
 }

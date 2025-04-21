@@ -1,6 +1,7 @@
 from django.db import models
 
 # from apps.albums.models import Album
+from django.utils.text import slugify
 
 # Create your models here.
 class AlbumPack(models.Model):

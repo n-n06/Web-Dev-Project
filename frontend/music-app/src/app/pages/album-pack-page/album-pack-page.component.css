@@ -10,3 +10,19 @@
 h2 {
     margin: 40px;
 }
+
+#delete-button {
+	margin: 30px;
+	padding: 8px;
+	background-color: red;
+	border: none;
+	border-radius: 6px;
+	color: white;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+#delete-button:hover {
+	background-color: darkred;
+	transform: scale(1.02);
+}
