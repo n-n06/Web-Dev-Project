@@ -5,15 +5,18 @@ import { AlbumPackService } from '../../services/album-pack.service';
 import { AlbumsComponent } from '../../common-ui/albums/albums.component';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-album-pack-page',
-  imports: [AlbumsComponent, FooterComponent, CommonModule],
+  imports: [AlbumsComponent, FooterComponent, CommonModule, FormsModule],
   templateUrl: './album-pack-page.component.html',
   styleUrl: './album-pack-page.component.css'
 })
 export class AlbumPackPageComponent implements OnInit {
   pack!: AlbumPack;
+  isEditing: boolean = false;
+  editedTitle: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -76,5 +79,30 @@ export class AlbumPackPageComponent implements OnInit {
         }
       });
   }
+
+  toggleEdit() {
+    this.editedTitle = this.pack.title;
+    this.isEditing = true;
+  }
+  
+  saveTitle() {
+    if (!this.editedTitle.trim()) {
+      alert('Title cannot be empty.');
+      return;
+    }
+  
+    this.albumPackService.updateAlbumPackTitle(this.pack.id, this.editedTitle)
+      .subscribe({
+        next: (updatedPack) => {
+          this.pack = updatedPack;
+          this.isEditing = false;
+          alert('Title updated successfully!');
+        },
+        error: (err) => {
+          console.error('Error updating title:', err);
+          alert('Failed to update title.');
+        }
+      });
+  }  
 
 }

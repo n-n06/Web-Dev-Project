@@ -33,4 +33,9 @@ export class AlbumPackService {
   public updateAlbumPack(id: number, payload: { albums: Album[] }) {
     return this.http.patch<AlbumPack>(`${baseUrl}${id}/`, payload);
   }  
+
+  public updateAlbumPackTitle(id: number, title: string): Observable<AlbumPack> {
+    return this.http.patch<AlbumPack>(`${baseUrl}${id}/`, { title });
+  }
+    
 }

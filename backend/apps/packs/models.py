@@ -21,6 +21,6 @@ class AlbumPack(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
+        # if not self.slug:
+        self.slug = slugify(self.title)
         super().save(*args, **kwargs)
