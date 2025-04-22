@@ -1,5 +1,5 @@
-import { User } from "./user";
-import { Album } from "../album.model";
+import { User } from "./user.model";
+import { Album } from "./album.model";
 
 export interface AlbumPack {
   id: number;

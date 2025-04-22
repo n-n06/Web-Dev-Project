@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AlbumPack } from '../models/interfaces/album-pack';
 import { Observable } from 'rxjs';
-import { Album } from '../models/album.model';
+import { Album } from '../models/interfaces/album.model';
 
 const baseUrl = 'http://127.0.0.1:8000/packs/';
 

@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
-import { Album } from '../../models/album.model';
 import { AlbumsService } from '../../services/albums.service';
-import { AlbumsComponent } from '../../common-ui/albums/albums.component';
 import { AlbumPack } from '../../models/interfaces/album-pack';
 import { Router } from '@angular/router';
 import { AlbumPackComponent } from '../../common-ui/album-pack/album-pack.component';
 import { AlbumPackService } from '../../services/album-pack.service';
+import { Album } from '../../models/interfaces/album.model';
 
 @Component({
   selector: 'app-profile-page',

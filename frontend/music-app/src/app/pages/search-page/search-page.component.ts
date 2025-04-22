@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumsComponent } from '../../common-ui/albums/albums.component';
-import { Album } from '../../models/album.model';
+import { Album } from '../../models/interfaces/album.model';
 import { AlbumsService } from '../../services/albums.service';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { AlbumPack } from '../../models/interfaces/album-pack';
@@ -68,7 +68,7 @@ export class SearchPageComponent {
       return;
     }
   
-    const alreadyExists = pack.albums.some(a => a.id === album.id);
+    const alreadyExists = pack.albums.some(a => a.spotify_id === album.spotify_id);
     if (alreadyExists) {
       alert('Album already exists in this pack!');
       this.closeModal();

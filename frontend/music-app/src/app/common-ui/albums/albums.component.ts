@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { Album } from '../../models/album.model';
+import { Album } from '../../models/interfaces/album.model';
 
 @Component({
   selector: 'app-albums',

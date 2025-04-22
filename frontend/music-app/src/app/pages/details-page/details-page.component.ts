@@ -30,7 +30,7 @@ export class DetailsPageComponent {
     const albumId = this.route.snapshot.paramMap.get('id')!;
 
     this.albumsService.getAllAlbums().subscribe((albums) => {
-      this.album = albums.find((album) => album.album_name === albumId);
+      this.album = albums.find((album) => album.spotify_id === albumId);
 
       const savedDescription = localStorage.getItem(`description_${albumId}`);
       const savedComments = localStorage.getItem(`comments_${albumId}`);
@@ -61,7 +61,7 @@ export class DetailsPageComponent {
       return;
     }
 
-    const albumId = this.album.id;
+    const albumId = this.album.spotify_id;
     localStorage.setItem(`description_${albumId}`, this.descriptionTemp);
     localStorage.setItem(`comments_${albumId}`, this.commentsTemp);
 

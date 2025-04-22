@@ -11,10 +11,11 @@ class Genre(models.Model):
         return self.name
 
 class Album(models.Model):
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='albums')
-    album_name = models.CharField(max_length=200)
-    genre = models.ManyToManyField(Genre, related_name='albums')
-    image = models.URLField(max_length=500, null=False)
+    spotify_id = models.CharField(max_length=255, unique=True, blank=True, null=True)
+    artists = models.ManyToManyField(Artist, related_name='albums')
+    album_name = models.CharField(max_length=512)
+    # genre = models.ManyToManyField(Genre, related_name='albums')
+    image_url = models.URLField(blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
