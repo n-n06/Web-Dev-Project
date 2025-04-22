@@ -70,8 +70,9 @@
   }
   
   .modal-content {
-    background-color: white;
-    color: black;
+    border: 2px solid var(--secondary);
+    background-color: var(--dark);
+    color: white;
     padding: 20px;
     border-radius: 10px;
     width: 300px;
@@ -89,6 +90,18 @@
   }
   
   .modal-content ul li:hover {
-    background-color: #f0f0f0;
+    background-color: #34383d;
   }
   
+  .modal-content button {
+    background-color: var(--primary);
+    border: none;
+    padding: 3px 8px;
+    margin: 0px 5px;
+    border-radius: 8px;
+    border: 1px solid var(--white);
+  }
+
+  .modal-content button:hover {
+    background-color: var(--secondary);
+  }
