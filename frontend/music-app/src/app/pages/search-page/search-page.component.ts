@@ -91,4 +91,28 @@ export class SearchPageComponent {
       });
   }  
   
+  createNewPack() {
+    if (!this.newPackName.trim()) {
+      alert('Please enter a pack name');
+      return;
+    }
+  
+    const newPack: Partial<AlbumPack> = {
+      title: this.newPackName,
+      albums: [this.selectedAlbum]
+    };
+  
+    this.albumPackService.createAlbumPack(newPack).subscribe({
+      next: (createdPack) => {
+        this.albumPacks.push(createdPack);
+        alert('New pack created and album added!');
+        this.closeModal();
+      },
+      error: (err) => {
+        console.error('Error creating pack:', err);
+        alert('Failed to create new pack.');
+      }
+    });
+  }
+  
 }

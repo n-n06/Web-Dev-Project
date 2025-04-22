@@ -22,15 +22,20 @@ export class AlbumPackService {
     return this.http.get<AlbumPack>(`${baseUrl}${id}/`);
   }
 
-  public createAlbumPack(payload: AlbumPack) {
-    return this.http.put(baseUrl, payload);
+  public createAlbumPack(payload: Partial<AlbumPack>) {
+    return this.http.post<AlbumPack>(baseUrl, payload);
   }
 
-  public deleteAlbumPack(id: string) {
-    return this.http.delete(`${baseUrl}api/packs/${id}`);
+  public deleteAlbumPack(id: number) {
+    return this.http.delete(`${baseUrl}${id}/`);
   }
 
   public updateAlbumPack(id: number, payload: { albums: Album[] }) {
     return this.http.patch<AlbumPack>(`${baseUrl}${id}/`, payload);
   }  
+
+  public updateAlbumPackTitle(id: number, title: string): Observable<AlbumPack> {
+    return this.http.patch<AlbumPack>(`${baseUrl}${id}/`, { title });
+  }
+    
 }

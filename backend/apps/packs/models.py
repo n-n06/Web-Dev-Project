@@ -1,6 +1,7 @@
 from django.db import models
 
 # from apps.albums.models import Album
+from django.utils.text import slugify
 
 # Create your models here.
 class AlbumPack(models.Model):
@@ -20,6 +21,6 @@ class AlbumPack(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
+        # if not self.slug:
+        self.slug = slugify(self.title)
         super().save(*args, **kwargs)
