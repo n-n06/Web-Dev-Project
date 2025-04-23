@@ -2,17 +2,14 @@ from django.db import models
 
 # from apps.albums.models import Album
 from django.utils.text import slugify
+from apps.users.models import UserProfile
 
 # Create your models here.
 class AlbumPack(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
-    # description = models.TextField()
-    # creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='album_packs')
-    # albums = models.ManyToManyField(Album, related_name='album_packs')
-    # likes = models.PositiveIntegerField(default=0)
-    # created_at = models.DateTimeField(auto_now_add=True)
-
+    description = models.TextField()
+    creator = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='album_packs')
 
     # just for testing purposes
     albums = models.JSONField(default=list)

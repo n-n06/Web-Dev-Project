@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { User } from '../models/interfaces/user.model';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://127.0.0.1:8000/api/public-profiles/';
+const baseUrl = 'http://127.0.0.1:8000/api/profiles/';
 
 @Injectable({
   providedIn: 'root'

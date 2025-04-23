@@ -4,52 +4,64 @@
   <section class="left-section">
     <div class="actions-container">
       <button (click)="goBack()">Return</button>
-      <a routerLink="/">Go to Home</a>
+      <button (click)="goHome()" class="go-home">Home</button>
     </div>   
-    
-    <div class="left-side">
-      <h2>{{ album.album_name }}</h2>
-      <img [src]="album.image" alt="{{ album.album_name }}" />
-      <p><strong>Title:</strong> {{ album.album_name }}</p>
-      <p><strong>Artists:</strong> {{ album.artist }}</p>
-      <p><strong>Release Year:</strong> {{ album.release_year }}</p>
-    </div>
   </section>
 
-
-
-  <div *ngIf="album" class="album-details">
+      
+  <div class="album-cover">
     
-      <h3>Tracks</h3>
-      <ul>
-        <li *ngFor="let track of album.tracks">{{ track }}</li>
-      </ul>
+    <img [src]="album.image_url" alt="{{ album.album_name }}" />
 
-      <button id="edit-button" (click)="toggleEdit()">Edit album details
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-          <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
-        </svg>
-      </button>
-
-      <div class="description">
-        <h3>Album Description</h3>
-        <textarea *ngIf="isEditing" [(ngModel)]="descriptionTemp" placeholder="Add a description for the album..."></textarea>
-        <span *ngIf="!isEditing">{{ description }}</span>
-      </div>
-
-      <div class="comments">
-        <h3>Additional Comments</h3>
-        <textarea *ngIf="isEditing" [(ngModel)]="commentsTemp" placeholder="Add comments or notes..."></textarea>
-        <span *ngIf="!isEditing">{{ comments }}</span>
-      </div>
-
-      <div class="user-actions-buttons"> 
-        <button *ngIf="isEditing" (click)="saveChanges()">Save Changes</button>
-        <button *ngIf="isEditing" (click)="cancelChanges()">Cancel</button>
-      </div>
   </div>
 
-  <img id="artist-image" [src]="album.artist_image" alt="{{ album.artist }}" />
+
+  <div class="album-details">
+    <h2>{{ album.album_name }}</h2>
+    <div class="album-data">
+      <p><strong>Title:</strong> {{ album.album_name }}</p>
+      <p><strong>Artists:</strong> {{ album.artists }}</p>
+      <p><strong>Release Year:</strong> {{ album.release_date }}</p>
+    </div>
+
+    <div class="save-button-container">
+      <button id="save-button" (click)="openSaveModal(this.album)" class="save-button">
+        Save
+    </button>
+    </div>
+  </div>
+
+  <div *ngIf="showPackModal" class="modal">
+    <div class="modal-content">
+      <h3>Choose Album Pack</h3>
+
+      <div class="new-pack">
+        <input
+          type="text"
+          placeholder="New pack name"
+          [(ngModel)]="newPackName"
+        />
+        <button (click)="createNewPack()">Create</button>
+      </div>
+
+      <ul>
+        <li *ngFor="let pack of albumPacks" (click)="saveToPack(selectedAlbum, pack.id)">
+          {{ pack.title }}
+        </li>
+      </ul>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
+  </div>  
+  <!-- <div *ngIf="album" class="album-details">
+    
+      <!-- <h3>Tracks</h3>
+      <ul>
+        <li *ngFor="let track of album.tracks">{{ track }}</li>
+      </ul> -->
+      
+  <!-- </div> --> 
+<!-- 
+  <img id="artist-image" [src]="album.artist_image" alt="{{ album.artist }}" /> -->
 </div>
 
 

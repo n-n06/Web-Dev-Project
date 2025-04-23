@@ -48,8 +48,16 @@
 
   <img src="https://preview.redd.it/jt3kkegbrb661.jpg?width=1080&crop=smart&auto=webp&s=9ad1bce7cc7538e7e6d86ecc2573eed6b05a6b18" alt="">
   <div class="home-message-container">
+    @if (this.authService.isAuthenticated()) {
+    <h1 class="home-message-h1">Find Something New!</h1>
+    <div class="buttons-authed">
+      <button class="home-button authed" (click)="redirectToSearch()"><h2>Browse Albums</h2></button>
+      <button class="home-button authed" (click)="redirectToPublicProfiles()"><h2>View Profiles</h2></button>
+    </div>
+    } @else {
     <h1 class="home-message-h1">Start Your Music Journey Today!</h1>
-    <h1 class="home-button home-message-button">Get Started</h1>
+    <button class="home-button not-authed home-message-button" (click)="redirectToLogin()"><h2>Get Started</h2></button>
+    }
   </div>
 </section>
 

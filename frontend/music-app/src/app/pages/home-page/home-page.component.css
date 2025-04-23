@@ -82,11 +82,30 @@
 }
 
 .home-get-started {
-    
+    display: flex;
+    flex-direction: row;
     /* background-color: var(--primary); */
     margin-bottom: 60px;
 }
 
 .home-get-started img {
     height: 90vh;
+}
+
+.home-message-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-message-h1 {
+    font-size: 80px;
+    text-align: center;
+}
+
+.home-message-button {
+    font-size: 24px;
+    width: 320px;
 }

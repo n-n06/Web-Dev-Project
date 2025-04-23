@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { AlbumPack } from '../models/interfaces/album-pack';
+import { AlbumPack } from '../models/interfaces/album-pack.model';
 import { Observable } from 'rxjs';
 import { Album } from '../models/interfaces/album.model';
 

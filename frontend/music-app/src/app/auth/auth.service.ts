@@ -65,13 +65,7 @@ export class AuthService {
   logout() {
     this.http.post(`${this.apiUrl}token/logout/`, {
       refresh: this.refreshToken
-    }).subscribe(res => {
-      this.cookie.deleteAll();
-      this.accessToken = null;
-      this.refreshToken = null;
-      this.router.navigate(['/login']);
-    }
-    );
+    });
 
     this.cookie.deleteAll();
     this.accessToken = null;

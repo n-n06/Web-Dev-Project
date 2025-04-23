@@ -29,6 +29,9 @@ LAST_FM_API_KEY = os.getenv('LAST_FM_API_KEY')
 SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
 SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
 
+C_KEY = os.getenv('C_KEY')
+C_SECRET = os.getenv('C_SECRET')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -63,6 +66,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
 
     'corsheaders',
+    'apps.users',
     'apps.albums',
     'apps.artists',
     'apps.packs',

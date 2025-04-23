@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlbumPack } from '../../models/interfaces/album-pack';
+import { AlbumPack } from '../../models/interfaces/album-pack.model';
 import { ActivatedRoute } from '@angular/router';
 import { AlbumPackService } from '../../services/album-pack.service';
 import { AlbumsComponent } from '../../common-ui/albums/albums.component';

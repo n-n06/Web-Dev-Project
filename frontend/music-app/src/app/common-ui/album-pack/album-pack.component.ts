@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AlbumPack } from '../../models/interfaces/album-pack';
+import { AlbumPack } from '../../models/interfaces/album-pack.model';
 import { Router } from '@angular/router';
 
 @Component({

@@ -4,7 +4,7 @@ import { AlbumsComponent } from '../../common-ui/albums/albums.component';
 import { Album } from '../../models/interfaces/album.model';
 import { AlbumsService } from '../../services/albums.service';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
-import { AlbumPack } from '../../models/interfaces/album-pack';
+import { AlbumPack } from '../../models/interfaces/album-pack.model';
 import { AlbumPackService } from '../../services/album-pack.service';
 import { FormsModule } from '@angular/forms';
 
@@ -23,9 +23,9 @@ export class SearchPageComponent {
   newPackName: string = '';
 
   constructor(private albumsService: AlbumsService, private albumPackService: AlbumPackService) {
-    // this.albumsService.getAllAlbums().subscribe((albumList: Album[]) => {
-    //   this.albumList = albumList;
-    // });
+    this.albumsService.getAllAlbums().subscribe((albumList: Album[]) => {
+      this.filteredAlbumList = albumList.slice(0, 50);
+    });
 
     this.albumPackService.getAllAlbumPacks().subscribe((packs: AlbumPack[]) => {
       this.albumPacks = packs.map(pack => ({

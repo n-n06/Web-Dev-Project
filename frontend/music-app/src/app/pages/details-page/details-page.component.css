@@ -1,91 +1,56 @@
 h1 {
     text-align: center;
     font-size: 40px;
+    margin: 20px 0;
 }
 
 .all-details {
     display: flex;
+    height: 72vh;
 }
 
-.all-details h2 {
-    margin-top: 50px;
-    margin-left: 100px;
-}
 
 #artist-image {
     position: absolute;
-    right: 0;
     width: 300px;
     margin-top: 80px;
 }
 
+
 .left-section {
+    height: 90;
+    margin: 0px 20px;
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.left-side {
+
+.album-cover {
+    margin: 0px 0px 0px 100px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
-.left-side img {
-    width: 300px;
-    margin-left: 80px;
-}
-
-.left-side p {
-    margin-left: 90px;
-    line-height: 1;
+.album-cover img {
+    width: 400px;
 }
 
 .album-details {
-    margin: 60px;
-    margin-left: 200px;
-    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 80px;
 }
 
-.album-details h3 {
-    margin: 10px;
-    margin-top: 50px;
+h2 {
+    font-size: 40px;
 }
 
-#edit-button {
-	background-color: rgba(0, 0, 0, 0.4);
-	transition: all 0.1s ease-in-out;
-	color: white;
-	margin-top: 70px;
-    padding: 5px;
-}
-
-#edit-button:hover {
-	background-color: rgba(0, 0, 0, 0.6);
-}
-
-#edit-button svg {
-	margin-left: 3px;
-	margin-bottom: -2px;
-	margin-right: -5px;
-}
-
-.user-actions-buttons {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	gap: 0 12px;
-}
-
-.user-actions-buttons button {
-	color: var(--white);
-	background-color: var(--secondary);
-	margin: 8px 0  0;
-	transition: all 0.1s ease-in-out;
-}
-
-.user-actions-buttons button:hover {
-	background-color: var(--secondary-light);
+.album-details p {
+    font-size: 20px;
 }
 
 .actions-container {
@@ -94,19 +59,103 @@ h1 {
     gap: 5px; 
     justify-content: center;
     align-items: center;
-    bottom: 10px;
 }
 
 .actions-container button {
-	background-color: transparent;
-    border: 1px solid white;
-	color: white;
-	padding: 5px 10px;
-	cursor: pointer;
-	margin: 10px 0 10px;
-	border-radius: 8px;
+    cursor: pointer;
+    color: var(--dark);
+    font-size: 16px;
+    background-color: var(--primary);
+    margin: 20px 0;
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--white);  
+}
+
+.actions-container button:hover{
+    background-color: var(--secondary);
 }
 
 .actions-container a {
     color: rgb(207, 207, 255);
 }
+
+button.go-home {
+    background-color: var(--secondary);
+}
+
+/*Save button*/
+button {
+    color: var(--dark);
+    border-radius: 20px;
+    padding: 6px 12px; 
+    font-size: 24px; 
+    font-weight: bold;
+    border: 1px solid var(--white); 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#save-button {
+    margin: 24px 0;
+    background-color: var(--primary);
+}
+
+#save-button:hover {
+    background-color: var(--secondary); 
+    transform: translateY(-2px); 
+}
+
+/*Model for saving albums*/
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .modal-content {
+    border: 2px solid var(--secondary);
+    background-color: var(--dark);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+  }
+
+  .modal-content ul {
+    list-style: none;
+  }
+  
+  .modal-content ul li {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  .modal-content ul li:hover {
+    background-color: #34383d;
+  }
+  
+  .modal-content button {
+    background-color: var(--primary);
+    border: none;
+    padding: 3px 8px;
+    margin: 0px 5px;
+    border-radius: 8px;
+    border: 1px solid var(--white);
+  }
+
+  .modal-content button:hover {
+    background-color: var(--secondary);
+  }
