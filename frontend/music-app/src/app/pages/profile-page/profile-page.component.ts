@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { AlbumPackComponent } from '../../common-ui/album-pack/album-pack.component';
 import { AlbumPackService } from '../../services/album-pack.service';
 import { Album } from '../../models/interfaces/album.model';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/interfaces/user.model';
 
 @Component({
   selector: 'app-profile-page',
@@ -19,52 +21,46 @@ import { Album } from '../../models/interfaces/album.model';
 export class ProfilePageComponent {
   profileImage: string | null = null;
   isEditing: boolean = false;
-  username: string = 'myname';
-  email: string = 'myname@gmail.com';
+  username: string = '';
+  email: string = '';
   usernameTemp: string = this.username;
   emailTemp: string = this.email;
 
-  // albumList: Album[] = [];
-  // filteredAlbumList: Album[] = [];
-
   albumPacks: AlbumPack[] = [];
 
-  constructor(private router: Router, private albumsService: AlbumsService, private albumPackService: AlbumPackService) {
-    const savedProfileImage = localStorage.getItem('profileImage');
-    if (savedProfileImage) {
-      this.profileImage = savedProfileImage;
-    }
+  constructor(
+    private router: Router, 
+    private albumPackService: AlbumPackService,
+    private userService: UserService
+  ) {
+    // const savedProfileImage = localStorage.getItem('profileImage');
+    // if (savedProfileImage) {
+    //   this.profileImage = savedProfileImage;
+    // }
 
-    this.albumPackService.getAllAlbumPacks().subscribe((packs) => this.albumPacks = packs);
   }
 
   ngOnInit() {
-    this.profileImage = null;
+    // this.profileImage = null;
 
-    const stored = localStorage.getItem('albumPacks');
-    if (stored) {
-      this.albumPacks = JSON.parse(stored);
-    } else {
-      this.albumPackService.getAllAlbumPacks().subscribe(packs => this.albumPacks = packs);
-    }
-
-
-    // const savedAlbums = localStorage.getItem('savedAlbums');
-    // if (savedAlbums) {
-    //   this.filteredAlbumList = JSON.parse(savedAlbums);
-    //   this.albumList = this.filteredAlbumList;
+    // const stored = localStorage.getItem('albumPacks');
+    // if (stored) {
+    //   this.albumPacks = JSON.parse(stored);
+    // } else {
+    //   this.albumPackService.getAllAlbumPacks().subscribe(packs => this.albumPacks = packs);
     // }
-  }
 
-  // filterResults(text: string) {
-  //   if (!text) {
-  //     this.filteredAlbumList = this.albumList;
-  //     return;
-  //   }
-  //   this.filteredAlbumList = this.albumList.filter((Album) =>
-  //     Album?.album_name.toLowerCase().includes(text.toLowerCase()),
-  //   );
-  // }
+    this.userService.getUserProfile().subscribe((user: User) => {
+      this.username = user.username;
+      this.email = user.email;
+      this.profileImage = user.avatar_url || null;
+
+      this.usernameTemp = this.username;
+      this.emailTemp = this.email;
+    });
+
+    this.albumPackService.getAllAlbumPacks().subscribe((packs) => this.albumPacks = packs);
+  }
 
   toggleEdit() {
     this.isEditing = !this.isEditing;
@@ -104,10 +100,24 @@ export class ProfilePageComponent {
       return;
     }
 
-    this.username = this.usernameTemp;
-    this.email = this.emailTemp;
-    console.log('Changes saved:', { username: this.username, email: this.email });
-    this.isEditing = false;
+    // this.username = this.usernameTemp;
+    // this.email = this.emailTemp;
+    // console.log('Changes saved:', { username: this.username, email: this.email });
+    // this.isEditing = false;
+
+    const updatedData = {
+      username: this.usernameTemp,
+      email: this.emailTemp,
+      profileImage: this.profileImage 
+    };
+
+    this.userService.updateUserDetails(updatedData).subscribe(updatedUser => {
+      this.username = updatedUser.username;
+      this.email = updatedUser.email;
+      this.profileImage = updatedUser.avatar_url || null;
+      this.isEditing = false;
+      console.log('Changes saved:', updatedUser);
+    });
   }
 
   cancelChanges() {
@@ -116,16 +126,4 @@ export class ProfilePageComponent {
     this.isEditing = false;
   }
 
-  // onAlbumRemoved(albumId: string): void {
-  //   const userConfirmed = confirm(`Are you sure you want to delete this album with ID: ${albumId}?`);
-
-  //   if (userConfirmed) {
-  //     this.filteredAlbumList = this.filteredAlbumList.filter(album => album.album_name !== albumId);
-  //     this.albumList = this.albumList.filter(album => album.album_name !== albumId);
-  //     localStorage.setItem('savedAlbums', JSON.stringify(this.filteredAlbumList));
-  //   } else {
-  //     console.log('Album deletion cancelled');
-  //     alert('Album deletion cancelled');
-  //   }
-  // }
 }

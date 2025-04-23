@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import PublicProfileSerializer
+from .serializers import PublicProfileSerializer, UserSerializer
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 
@@ -26,3 +26,27 @@ class PublicUserProfileView(APIView):
             return Response(serializer.data)
         except User.DoesNotExist:
             return Response({"detail": "User not found."}, status=404)
+        
+class PrivateUserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
+        user = request.user
+        serializer = UserSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
+
+    def patch(self, request):
+        user = request.user
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
+
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)

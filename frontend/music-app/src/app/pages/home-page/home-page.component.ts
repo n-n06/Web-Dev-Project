@@ -19,6 +19,10 @@ export class HomePageComponent {
   }
 
   redirectToSearch() {
-    this.router.navigate(['/search'])
+    this.router.navigate(['/search']);
+  }
+
+  redirectToPublicProfiles() {
+    this.router.navigate(['/public-profiles']);
   }
 }

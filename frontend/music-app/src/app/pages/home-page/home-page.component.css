@@ -13,6 +13,11 @@
     font-size: 80px;
 }
 
+.buttons-authed {
+    display: flex;
+    gap: 20px;
+}
+
 .home-button {
     cursor: pointer;
     color: var(--dark);

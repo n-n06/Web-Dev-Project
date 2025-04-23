@@ -2,7 +2,10 @@
   <div class="home-page-quote">
     <h1>Discover New Music with Ease</h1>
     @if (this.authService.isAuthenticated()) {
-      <button class="home-button authed" (click)="redirectToSearch()"><h2>Browse Albums</h2></button>
+      <div class="buttons-authed">
+        <button class="home-button authed" (click)="redirectToSearch()"><h2>Browse Albums</h2></button>
+        <button class="home-button authed" (click)="redirectToPublicProfiles()"><h2>View Profiles</h2></button>
+      </div>
     } @else {
       <button class="home-button not-authed" (click)="redirectToLogin()"><h2>Get Started</h2></button>
     }
