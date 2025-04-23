@@ -6,24 +6,29 @@ from django.http import JsonResponse
 from .models import AlbumPack
 from .serializers import AlbumPackSerializer
 
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
-@csrf_exempt
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def album_packs_list(request):
     if request.method == 'GET':
-        album_packs = AlbumPack.objects.all()
+        album_packs = AlbumPack.objects.filter(creator=request.user)
         serializer = AlbumPackSerializer(album_packs, many=True)
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
         data = json.loads(request.body)
+        data['creator'] = request.user.id
         serializer = AlbumPackSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
-@csrf_exempt
+
+@api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def album_pack_detail(request, album_pack_id=None):
     try:
         album_pack = AlbumPack.objects.get(pk=album_pack_id)

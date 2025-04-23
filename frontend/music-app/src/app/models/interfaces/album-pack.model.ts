@@ -4,9 +4,10 @@ import { Album } from "./album.model";
 export interface AlbumPack {
   id: number;
   title: string;
-  // description: string;
-  // creator: User;
+  description: string;
+  comments: string;
+  creator: User;
   albums: Album[];
   // likes: number;
-  // created_at: string;
+  created_at: string;
 }

@@ -2,3 +2,14 @@ h2 {
     text-align: center;
     font-size: 50px;
 }
+
+h3 {
+    margin: 40px;
+    font-size: 30px;
+}
+
+.album-pack-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+}

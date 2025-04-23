@@ -3,6 +3,7 @@ from django.db import models
 # from apps.albums.models import Album
 from django.utils.text import slugify
 from apps.users.models import UserProfile
+from django.contrib.auth.models import User
 
 # Create your models here.
 class AlbumPack(models.Model):
