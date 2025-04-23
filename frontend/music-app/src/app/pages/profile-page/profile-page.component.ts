@@ -2,12 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../common-ui/footer/footer.component';
-import { AlbumsService } from '../../services/albums.service';
 import { AlbumPack } from '../../models/interfaces/album-pack';
 import { Router } from '@angular/router';
 import { AlbumPackComponent } from '../../common-ui/album-pack/album-pack.component';
 import { AlbumPackService } from '../../services/album-pack.service';
-import { Album } from '../../models/interfaces/album.model';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/interfaces/user.model';
 
@@ -116,6 +114,7 @@ export class ProfilePageComponent {
       this.email = updatedUser.email;
       this.profileImage = updatedUser.avatar_url || null;
       this.isEditing = false;
+      alert('User details updated successfully!');
       console.log('Changes saved:', updatedUser);
     });
   }
