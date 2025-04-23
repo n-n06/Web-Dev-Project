@@ -32,7 +32,7 @@ class ExternalAPIService:
         sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
         try:
-            results = sp.search(q=f'album:{query}', type='album', limit=limit)
+            results = sp.search(q=query, type='album', limit=limit)
             return results
         except Exception as e:
             print(f"Spotify API Error: {e}")

@@ -1,7 +1,7 @@
-<div class="album-card" (click)="goToDetailPage(album.album_name)">
+<div class="album-card" (click)="goToDetailPage(album.spotify_id)">
     <img [src]="album.image_url" alt="{{ album.album_name }}" class="album-image" />
     <h3>{{ album.album_name }}</h3>
-    <p>Artists: {{ album.artists }}</p>
+    <p>Artists: {{ album.artists | albumArtists}}</p>
 
     <button id="save-button" *ngIf="enableSave" (click)="saveAlbum($event)" class="save-button">
         Save

@@ -8,5 +8,5 @@ class AlbumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Album
-        fields = ['spotify_id', 'name', 'release_date', 'image_url', 'artists']
+        fields = ['spotify_id', 'album_name', 'release_date', 'image_url', 'artists']
         read_only_fields = ['spotify_id'] # Prevent modification of the unique Spotify ID

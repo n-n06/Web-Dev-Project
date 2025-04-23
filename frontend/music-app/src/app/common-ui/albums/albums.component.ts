@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { Album } from '../../models/interfaces/album.model';
+import { AlbumArtistsPipe } from '../../pipes/album-artists.pipe';
 
 @Component({
   selector: 'app-albums',
-  imports: [CommonModule],
+  imports: [CommonModule, AlbumArtistsPipe],
   templateUrl: './albums.component.html',
   styleUrl: './albums.component.css'
 })
@@ -17,7 +18,26 @@ export class AlbumsComponent {
   @Output() removed = new EventEmitter<string>()
   @Output() saveClick = new EventEmitter<Album>();
 
-  constructor(private router: Router) { }
+  artists : string = '';
+
+  router : Router = inject(Router);
+
+  // ngOnInit(): void {
+  //   if (this.album && this.album.artists) {
+  //     this.artists = this.album.artists.map(artist => artist.name).join(', ');
+  //   } else {
+  //     this.artists = 'Unknown';
+  //     console.warn('Album or album.artists is undefined in AlbumsComponent');
+  //   }
+  // }
+
+  // onChanges(changes: SimpleChanges): void {
+  //   if (changes['album'] && changes['album'].currentValue) {
+  //     this.artists = this.album.artists ? this.album.artists.map(artist => artist.name).join(', ') : '';
+  //   } else {
+  //     this.artists = '';
+  //   }
+  // }
 
   goToDetailPage(albumId: string): void {
     this.router.navigate(['/albums', albumId]);

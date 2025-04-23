@@ -23,10 +23,9 @@ export class SearchPageComponent {
   newPackName: string = '';
 
   constructor(private albumsService: AlbumsService, private albumPackService: AlbumPackService) {
-    this.albumsService.getAllAlbums().subscribe((albumList: Album[]) => {
-      this.albumList = albumList;
-      this.filteredAlbumList = albumList;
-    });
+    // this.albumsService.getAllAlbums().subscribe((albumList: Album[]) => {
+    //   this.albumList = albumList;
+    // });
 
     this.albumPackService.getAllAlbumPacks().subscribe((packs: AlbumPack[]) => {
       this.albumPacks = packs.map(pack => ({

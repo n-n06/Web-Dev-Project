@@ -58,8 +58,9 @@ class AlbumSearchAPIView(APIView):
             response_data.append({
                 'spotify_id' : album.spotify_id,
                 'album_name': album.album_name,
-                'artist': ', '.join(album.artists.values_list('name', flat=True)),
-                'image_url': album.image_url
+                'artists': album.artists.values('name', 'spotify_id', 'spotify_url'),
+                'image_url': album.image_url,
+                'release_date' : album.release_date
             })
 
         return Response(response_data, status=status.HTTP_200_OK)
@@ -81,4 +82,11 @@ class AlbumSearchAPIView(APIView):
 def album_detail_view(req, spotify_id):
     album = get_object_or_404(Album, spotify_id=spotify_id)
     serializer = AlbumSerializer(album)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])  
+def album_list_view(req):
+    albums = Album.objects.all()
+    serializer = AlbumSerializer(albums, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)

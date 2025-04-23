@@ -14,7 +14,7 @@ export class AlbumsService {
   constructor(private http: HttpClient) { }
 
   getAllAlbums(): Observable<Album[]> {
-    return this.http.get<Album[]>(baseUrl);
+    return this.http.get<Album[]>('http://localhost:8000/api/albums/');
   }
 
   public getAlbumById(id: string): Observable<Album> {

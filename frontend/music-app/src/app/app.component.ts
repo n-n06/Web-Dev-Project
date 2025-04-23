@@ -14,8 +14,4 @@ export class AppComponent {
 
   authService: AuthService = inject(AuthService);
 
-  ngOnDestroy(): void {
-    console.log('AppComponent is being destroyed, attempting logout...');
-    this.authService.logout();
-  }
 }

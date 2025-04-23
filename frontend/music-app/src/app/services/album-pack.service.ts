@@ -5,7 +5,7 @@ import { AlbumPack } from '../models/interfaces/album-pack';
 import { Observable } from 'rxjs';
 import { Album } from '../models/interfaces/album.model';
 
-const baseUrl = 'http://127.0.0.1:8000/packs/';
+const baseUrl = 'http://127.0.0.1:8000/api/packs/';
 
 @Injectable({
   providedIn: 'root'

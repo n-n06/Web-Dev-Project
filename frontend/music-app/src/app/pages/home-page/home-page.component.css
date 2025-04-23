@@ -67,8 +67,8 @@
     background-color: var(--dark-secondary);
 }
 
-.home-page-card img {
-    width: 140px;
+.home-page-svg {
+    color: var(--primary);
 }
 
 .home-page-card h3 {
@@ -77,6 +77,7 @@
 }
 
 .home-get-started {
+    
     /* background-color: var(--primary); */
     margin-bottom: 60px;
 }
