@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { AlbumsService } from '../../services/albums.service';
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css'
 })
-export class DetailsPageComponent {
+export class DetailsPageComponent implements OnInit {
   album: any;
   isEditing: boolean = false;
   description: string = 'Popular music album.';
