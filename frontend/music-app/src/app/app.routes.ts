@@ -10,6 +10,8 @@ import { DetailsPageComponent } from './pages/details-page/details-page.componen
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { AlbumPackPageComponent } from './pages/album-pack-page/album-pack-page.component';
+import { PublicProfilesPageComponent } from './pages/public-profiles-page/public-profiles-page.component';
+import { PublicProfileDetailsPageComponent } from './pages/public-profile-details-page/public-profile-details-page.component';
 
 export const routes: Routes = [
     {
@@ -46,6 +48,16 @@ export const routes: Routes = [
             {
                 path: 'albums/:id',
                 component: DetailsPageComponent,
+                canActivate: [canActivateAuth]
+            },
+            {
+                path: 'public-profiles',
+                component: PublicProfilesPageComponent,
+                canActivate: [canActivateAuth]
+            },
+            {
+                path: 'public-profiles/:id',
+                component: PublicProfileDetailsPageComponent,
                 canActivate: [canActivateAuth]
             },
             {
