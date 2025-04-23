@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 @permission_classes([IsAuthenticated])
 def album_packs_list(request):
     if request.method == 'GET':
-        album_packs = AlbumPack.objects.all()
+        album_packs = AlbumPack.objects.filter(creator=request.user)
         serializer = AlbumPackSerializer(album_packs, many=True)
         return JsonResponse(serializer.data, safe=False)
 
