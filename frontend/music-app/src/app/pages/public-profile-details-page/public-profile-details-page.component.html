@@ -1,1 +1,12 @@
 <h2>{{ user.username }}'s profile</h2>
+
+<div *ngIf="albumPacks.length > 0; else noAlbums">
+    <h3>Album Packs created by {{ user.username }}</h3>
+    <div class="album-pack-grid">
+        <app-album-pack *ngFor="let pack of albumPacks" [pack]="pack"></app-album-pack>
+    </div>
+</div>
+
+<ng-template #noAlbums>
+    <p>This user hasn't created any album packs yet.</p>
+</ng-template>
