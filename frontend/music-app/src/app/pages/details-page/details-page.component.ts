@@ -8,10 +8,11 @@ import { AlbumsService } from '../../services/albums.service';
 import { Album } from '../../models/interfaces/album.model';
 import { AlbumPack } from '../../models/interfaces/album-pack.model';
 import { AlbumPackService } from '../../services/album-pack.service';
+import { AlbumArtistsPipe } from '../../pipes/album-artists.pipe';
 
 @Component({
   selector: 'app-details-page',
-  imports: [CommonModule, RouterModule, FooterComponent, FormsModule],
+  imports: [CommonModule, RouterModule, FooterComponent, FormsModule, AlbumArtistsPipe],
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css'
 })

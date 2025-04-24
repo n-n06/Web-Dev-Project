@@ -20,7 +20,7 @@
     <h2>{{ album.album_name }}</h2>
     <div class="album-data">
       <p><strong>Title:</strong> {{ album.album_name }}</p>
-      <p><strong>Artists:</strong> {{ album.artists }}</p>
+      <p><strong>Artists:</strong> {{ album.artists | albumArtists }}</p>
       <p><strong>Release Year:</strong> {{ album.release_date }}</p>
     </div>
 
