@@ -111,7 +111,6 @@ export class SearchPageComponent {
     this.userService.getUserProfile().subscribe(res => {
       creator = res;
 
-      console.log('HERE FUCK UUU', creator.profile.id)
 
       const newPack: Partial<AlbumPack> = {
         title: this.newPackName,
