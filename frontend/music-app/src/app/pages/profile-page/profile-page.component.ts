@@ -8,6 +8,9 @@ import { AlbumPackComponent } from '../../common-ui/album-pack/album-pack.compon
 import { AlbumPackService } from '../../services/album-pack.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/interfaces/user.model';
+import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
+import { Subject, takeUntil } from 'rxjs';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-page',
@@ -17,6 +20,10 @@ import { User } from '../../models/interfaces/user.model';
   styleUrl: './profile-page.component.css'
 })
 export class ProfilePageComponent {
+  selectedFile: File | null = null;
+  imageUrl: SafeUrl | null = null;
+  uploadProgress: number = 0;
+  userProfile !: User;
   profileImage: string | null = null;
   isEditing: boolean = false;
   username: string = '';
@@ -24,41 +31,34 @@ export class ProfilePageComponent {
   usernameTemp: string = this.username;
   emailTemp: string = this.email;
 
+  private destroy$ = new Subject<void>();
+
   albumPacks: AlbumPack[] = [];
 
   constructor(
     private router: Router, 
     private albumPackService: AlbumPackService,
-    private userService: UserService
+    private userService: UserService,
+    private sanitizer: DomSanitizer,
+    private http: HttpClient
   ) {
-    // const savedProfileImage = localStorage.getItem('profileImage');
-    // if (savedProfileImage) {
-    //   this.profileImage = savedProfileImage;
-    // }
-
+    this.getUserProfile();
   }
 
   ngOnInit() {
-    // this.profileImage = null;
-
-    // const stored = localStorage.getItem('albumPacks');
-    // if (stored) {
-    //   this.albumPacks = JSON.parse(stored);
-    // } else {
-    //   this.albumPackService.getAllAlbumPacks().subscribe(packs => this.albumPacks = packs);
-    // }
-
-    this.userService.getUserProfile().subscribe((user: User) => {
-      this.username = user.username;
-      this.email = user.email;
-      this.profileImage = user.avatar_url || null;
-
-      this.usernameTemp = this.username;
-      this.emailTemp = this.email;
-    });
-
     this.albumPackService.getAllAlbumPacks().subscribe((packs) => this.albumPacks = packs);
   }
+
+
+
+  getUserProfile() {
+    this.userService.getUserProfile().subscribe((user: User) => {
+      this.userProfile = user;
+      this.username = user.username;   
+      this.email = user.email;  
+    });
+  }
+
 
   toggleEdit() {
     this.isEditing = !this.isEditing;
@@ -69,18 +69,52 @@ export class ProfilePageComponent {
   }
 
   onImageSelect(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.profileImage = URL.createObjectURL(file);
-      localStorage.setItem('profileImage', this.profileImage);
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(this.selectedFile));
+      
     }
     this.isEditing = false;
+  }
+
+  uploadImage() {
+    if (!this.selectedFile) {
+      console.warn('No file selected.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('profile_image', this.selectedFile); // 'profile_image' matches the field name in your serializer
+
+    this.http
+      .patch<User>('/api/users/me/', formData, {
+        reportProgress: true,
+        observe: 'events',
+      })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (event: any) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.uploadProgress = Math.round(
+              (100 * event.loaded) / event.total
+            );
+          } else if (event.type === HttpEventType.Response) {
+            this.uploadProgress = 0;
+            this.userProfile = event.body;
+            console.log('Upload successful:', event.body);
+            this.getUserProfile();
+          }
+        },
+        error: (error: Error) => {
+          this.uploadProgress = 0;
+          console.error('Error uploading image:', error);
+        }
+    });
   }
 
   deleteProfileImage(): void {
     this.profileImage = null;
 
-    localStorage.removeItem('profileImage');
     const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
@@ -112,11 +146,13 @@ export class ProfilePageComponent {
     this.userService.updateUserDetails(updatedData).subscribe(updatedUser => {
       this.username = updatedUser.username;
       this.email = updatedUser.email;
-      this.profileImage = updatedUser.avatar_url || null;
       this.isEditing = false;
+      this.uploadImage();
       alert('User details updated successfully!');
       console.log('Changes saved:', updatedUser);
     });
+
+    this.getUserProfile();
   }
 
   cancelChanges() {

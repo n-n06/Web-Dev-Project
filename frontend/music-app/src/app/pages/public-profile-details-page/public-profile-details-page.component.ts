@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/interfaces/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { PublicProfilesService } from '../../services/public-profiles.service';
-import { AlbumPack } from '../../models/interfaces/album-pack';
+import { AlbumPack } from '../../models/interfaces/album-pack.model';
 import { AlbumPackService } from '../../services/album-pack.service';
 import { AlbumPackComponent } from '../../common-ui/album-pack/album-pack.component';
 import { CommonModule } from '@angular/common';
+import { UserProfile } from '../../models/interfaces/user-profile.model';
 
 @Component({
   selector: 'app-public-profile-details-page',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PublicProfileDetailsPageComponent implements OnInit {
   user!: User;
-  albumPacks: AlbumPack[] = [];
+  albumPacks: AlbumPack[] | undefined = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +32,7 @@ export class PublicProfileDetailsPageComponent implements OnInit {
         next: (found) => {
           if (found) {
             this.user = found;
-            this.albumPacks = found.album_packs;
+            this.albumPacks = found.profile.album_packs;
           } else {
             console.warn('No user found with id:', id);
           }

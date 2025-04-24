@@ -6,16 +6,23 @@ from apps.users.models import UserProfile
 
 
 class PublicProfileSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
     username = serializers.CharField(read_only=True, source='user.username')
-    profile_image_url = serializers.URLField(allow_blank=True, required=False)
+    profile_image_url = serializers.SerializerMethodField()
     album_packs = AlbumPackSerializer(many=True, read_only=True)
+
+    def get_profile_image_url(self, obj):
+        request = self.context.get('request')
+        if obj.profile_image and hasattr(obj.profile_image, 'url'):
+            return request.build_absolute_uri(obj.profile_image.url) if request else obj.profile_image.url
+        return ''
 
 class PrivateProfileSerializer(serializers.ModelSerializer):
     album_packs = AlbumPackSerializer(many=True, read_only=True)
 
     class Meta:
         model = UserProfile
-        fields = ['profile_image_url', 'album_packs']
+        fields = ['id', 'profile_image', 'album_packs']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -33,7 +40,7 @@ class UserSerializer(serializers.ModelSerializer):
         instance.email = validated_data.get('email', instance.email)
         instance.save()
 
-        profile_instance.profile_image_url = profile_data.get('profile_image_url', profile_instance.profile_image_url)
+        if 'profile_image' in profile_data:
+            profile_instance.profile_image = profile_data['profile_image']
         profile_instance.save()
-
         return instance

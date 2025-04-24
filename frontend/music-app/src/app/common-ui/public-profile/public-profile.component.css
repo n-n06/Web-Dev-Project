@@ -1,6 +1,6 @@
 .public-profile-card {
     border-radius: 50%;
-    border: 2px solid white;
+    border: 8px solid white;
     width: 200px;
     height: 200px;
     display: flex; 

@@ -7,15 +7,24 @@
       </button>
       <input type="text" placeholder="Search" #filter (keyup.enter)="filterResults(filter.value)">
   </div>
+
+  <h1>Recently Searched</h1>
 </div>
 
-  <section class="album-cards">
+
+
+<section class="album-cards">
+  @if (this.loaded) {
     <app-albums *ngFor="let album of filteredAlbumList; let i = index"
-     [album]="album" 
-     [enableSave]="true" 
-     (saveClick)="openSaveModal(album)">
+    [album]="album" 
+    [enableSave]="true" 
+    (saveClick)="openSaveModal(album)">
     </app-albums>
-  </section>
+  } @else {
+    <span class="spinner"></span>
+  }
+
+</section>
 
   <div *ngIf="showPackModal" class="modal">
     <div class="modal-content">
@@ -27,6 +36,11 @@
           placeholder="New pack name"
           [(ngModel)]="newPackName"
         />
+        <input
+        type="text"
+        placeholder="Description"
+        [(ngModel)]="newPackDesc"
+      />
         <button (click)="createNewPack()">Create</button>
       </div>
 

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../../models/interfaces/user.model';
 import { CommonModule } from '@angular/common';
 import { PublicProfileComponent } from "../../common-ui/public-profile/public-profile.component";
+import { UserProfile } from '../../models/interfaces/user-profile.model';
 
 @Component({
   selector: 'app-public-profiles-page',
@@ -15,6 +16,9 @@ export class PublicProfilesPageComponent {
   users: User[] = [];
 
   constructor(private router: Router, private publicProfilesService: PublicProfilesService) {
-    this.publicProfilesService.getAllUsers().subscribe((users) => this.users = users);
+    this.publicProfilesService.getAllUserProfiles().subscribe((users) => {
+      console.log(users);
+      this.users = users;
+    });
   }
 }

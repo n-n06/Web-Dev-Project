@@ -7,3 +7,9 @@
 	padding-left: 60px;
     align-items: stretch;
 }
+
+h2 {
+	text-align: center;
+	margin: 20px;
+	font-size: 32px;
+}

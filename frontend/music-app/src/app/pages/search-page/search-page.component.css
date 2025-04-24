@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .album-cards {
 	display: flex;
 	flex-wrap: wrap;
@@ -32,12 +38,18 @@
 
 .search-bar-container {
     padding: 12px 0px;
+    text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 50%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.search-bar-container h1 {
+  margin: 20px 0;
 }
 
 .search-bar:focus {
@@ -105,3 +117,20 @@
   .modal-content button:hover {
     background-color: var(--secondary);
   }
+
+
+.spinner {
+  width: 200px;
+  height: 200px;
+  border: 10px solid var(--primary);
+  border-top: 10px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

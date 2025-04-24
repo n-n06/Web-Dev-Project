@@ -7,6 +7,9 @@ import { FooterComponent } from '../../common-ui/footer/footer.component';
 import { AlbumPack } from '../../models/interfaces/album-pack.model';
 import { AlbumPackService } from '../../services/album-pack.service';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { UserProfile } from '../../models/interfaces/user-profile.model';
+import { User } from '../../models/interfaces/user.model';
 
 @Component({
   selector: 'app-search-page',
@@ -21,10 +24,18 @@ export class SearchPageComponent {
   selectedAlbum!: Album;
   albumPacks: AlbumPack[] = [];
   newPackName: string = '';
+  newPackDesc: string = '';
 
-  constructor(private albumsService: AlbumsService, private albumPackService: AlbumPackService) {
+  loaded : boolean = false;
+
+  constructor(
+    private albumsService: AlbumsService, 
+    private albumPackService: AlbumPackService,
+    private userService: UserService
+  ) {
     this.albumsService.getAllAlbums().subscribe((albumList: Album[]) => {
-      this.filteredAlbumList = albumList.slice(0, 50);
+      this.filteredAlbumList = albumList.slice(100, 160);
+      this.loaded = true;
     });
 
     this.albumPackService.getAllAlbumPacks().subscribe((packs: AlbumPack[]) => {
@@ -95,23 +106,35 @@ export class SearchPageComponent {
       alert('Please enter a pack name');
       return;
     }
+
+    let creator !: User;
+    this.userService.getUserProfile().subscribe(res => {
+      creator = res;
+
+      console.log('HERE FUCK UUU', creator.profile.id)
+
+      const newPack: Partial<AlbumPack> = {
+        title: this.newPackName,
+        description: this.newPackDesc,
+        creator: creator.profile.id,
+        albums: [this.selectedAlbum]
+      };
+    
+      this.albumPackService.createAlbumPack(newPack).subscribe({
+        next: (createdPack) => {
+          this.albumPacks.push(createdPack);
+          alert('New pack created and album added!');
+          this.closeModal();
+        },
+        error: (err) => {
+          console.error('Error creating pack:', err);
+          alert('Failed to create new pack.');
+        }
+      });
+    })
+
   
-    const newPack: Partial<AlbumPack> = {
-      title: this.newPackName,
-      albums: [this.selectedAlbum]
-    };
-  
-    this.albumPackService.createAlbumPack(newPack).subscribe({
-      next: (createdPack) => {
-        this.albumPacks.push(createdPack);
-        alert('New pack created and album added!');
-        this.closeModal();
-      },
-      error: (err) => {
-        console.error('Error creating pack:', err);
-        alert('Failed to create new pack.');
-      }
-    });
+
   }
   
 }

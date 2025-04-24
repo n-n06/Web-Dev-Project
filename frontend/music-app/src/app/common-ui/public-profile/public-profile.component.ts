@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../models/interfaces/user.model';
 import { Router } from '@angular/router';
+import { UserProfile } from '../../models/interfaces/user-profile.model';
 
 @Component({
   selector: 'app-public-profile',

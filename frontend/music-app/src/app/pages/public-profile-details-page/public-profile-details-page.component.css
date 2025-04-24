@@ -9,6 +9,7 @@ h3 {
 }
 
 .album-pack-grid {
+    margin: 40px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 15px;

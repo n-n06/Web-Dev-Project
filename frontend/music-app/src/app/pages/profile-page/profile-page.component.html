@@ -8,7 +8,7 @@
     <div class="profile-image">
       
       <div class="image-container">
-        <img [src]="profileImage" alt="Profile Image" *ngIf="profileImage; else defaultImage" />
+        <img [src]="profileImage" alt="Profile Image" *ngIf="imageUrl; else defaultImage" />
 
         <ng-template #defaultImage>
           <img src="default-profile.png" alt="Default Profile" />
@@ -24,6 +24,7 @@
   
       <div *ngIf="isEditing" class="edit-options">
         <input type="file" (change)="onImageSelect($event)" accept="image/*" class="pfp-input"/>
+        <button (click)="uploadImage()">Upload Profile Picture</button>
         <button class="delete-button" *ngIf="profileImage" (click)="deleteProfileImage()">Delete
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -41,7 +42,7 @@
         <input 
           *ngIf="isEditing" 
           type="text" 
-          [(ngModel)]="usernameTemp" 
+          [(ngModel)]="this.userProfile.username" 
           placeholder="Edit Username" 
         />
         <span *ngIf="!isEditing">{{ username }}</span>
@@ -52,7 +53,7 @@
         <input 
           *ngIf="isEditing" 
           type="email" 
-          [(ngModel)]="emailTemp" 
+          [(ngModel)]="this.userProfile.email" 
           placeholder="Edit Email" 
         />
         <span *ngIf="!isEditing">{{ email }}</span>
@@ -65,7 +66,7 @@
       </div>
     </div>
     
-    <div class="social-media">
+    <!-- <div class="social-media">
       <h2>Social media</h2>
       <div class="social-media-logos">
         <a href="https://accounts.spotify.com/en/login" target="_blank">
@@ -78,7 +79,7 @@
           <img src="facebook-logo.png" alt="Facebook logo" class="logo-image" />
         </a>
       </div>
-    </div> 
+    </div>  -->
   </div>
 
   
