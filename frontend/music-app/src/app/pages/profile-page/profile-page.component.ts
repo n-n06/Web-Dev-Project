@@ -138,16 +138,14 @@ export class ProfilePageComponent {
     // this.isEditing = false;
 
     const updatedData = {
-      username: this.usernameTemp,
-      email: this.emailTemp,
-      profileImage: this.profileImage 
+      username: this.userProfile.username,
+      email: this.userProfile.email
     };
 
     this.userService.updateUserDetails(updatedData).subscribe(updatedUser => {
       this.username = updatedUser.username;
       this.email = updatedUser.email;
       this.isEditing = false;
-      this.uploadImage();
       alert('User details updated successfully!');
       console.log('Changes saved:', updatedUser);
     });

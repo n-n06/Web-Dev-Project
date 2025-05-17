@@ -28,33 +28,24 @@ def public_user_profile_view(request, user_id):
 @api_view(['GET', 'PATCH'])
 @permission_classes([IsAuthenticated])
 def private_user_profile_view(request):
-
     user = request.user
+
+    try:
+        profile = user.profile
+    except UserProfile.DoesNotExist:
+        UserProfile.objects.create(user=user, profile_image=None)
+
     if request.method == 'PATCH':
-        ser = UserSerializer(user, data=request.data, partial=True, context={'request': request})
+        ser = UserSerializer(user, data=request.data, partial=True)
+        print(request.data)
         if ser.is_valid():
             ser.save()
             return Response(ser.data, status=status.HTTP_200_OK)
         return Response(ser.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'GET':
-        try:
-            profile = user.profile
-        except UserProfile.DoesNotExist:
-            profile_data = {'profile_image': None}
-            UserProfile.objects.create(user=user, **profile_data)
-            profile = user.profile
-
-        if request.method == 'PATCH':
-            ser = UserSerializer(user, data=request.data, partial=True, context={'request': request})
-            if ser.is_valid():
-                ser.save()
-                return Response(ser.data, status=status.HTTP_200_OK)
-            return Response(ser.errors, status=status.HTTP_400_BAD_REQUEST)
-        elif request.method == 'GET':
-            ser = UserSerializer(user, context={'request': request})
-            return Response(ser.data, status=status.HTTP_200_OK)
-
+        ser = UserSerializer(user, context={'request': request})
+        return Response(ser.data, status=status.HTTP_200_OK)
 
 
 # class PublicUserListView(APIView):
