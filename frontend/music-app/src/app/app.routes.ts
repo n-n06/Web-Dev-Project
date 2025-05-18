@@ -12,6 +12,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { AlbumPackPageComponent } from './pages/album-pack-page/album-pack-page.component';
 import { PublicProfilesPageComponent } from './pages/public-profiles-page/public-profiles-page.component';
 import { PublicProfileDetailsPageComponent } from './pages/public-profile-details-page/public-profile-details-page.component';
+import { PasswordChangePageComponent } from './pages/password-change-page/password-change-page.component';
 
 export const routes: Routes = [
     {
@@ -58,6 +59,11 @@ export const routes: Routes = [
             {
                 path: 'public-profiles/:id',
                 component: PublicProfileDetailsPageComponent,
+                canActivate: [canActivateAuth]
+            },
+            {
+                path: 'password-change',
+                component: PasswordChangePageComponent,
                 canActivate: [canActivateAuth]
             },
             {

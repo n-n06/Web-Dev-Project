@@ -13,16 +13,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='albumpack',
-            name='creator',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, related_name='album_packs', to='users.userprofile'),
-            preserve_default=False,
-        ),
-        migrations.AddField(
-            model_name='albumpack',
-            name='description',
-            field=models.TextField(default='New Pack'),
-            preserve_default=False,
-        ),
+       
     ]

@@ -122,8 +122,8 @@ export class ProfilePageComponent {
     this.isEditing = false;
   }
 
-  changePassword() {
-    console.log('Password change clicked');
+  goToChangePasswordPage() {
+    this.router.navigate(['/password-change']);
   }
 
   saveChanges() {

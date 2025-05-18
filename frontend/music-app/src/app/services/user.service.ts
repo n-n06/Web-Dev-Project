@@ -18,4 +18,12 @@ export class UserService {
   updateUserDetails(data: Partial<User>): Observable<User> {
     return this.http.patch<User>(baseUrl, data);
   }
+
+  changePassword(currentPassword: string, newPassword: string) {
+    return this.http.post<{ message: string }>(`${baseUrl}change-password/`, {
+      current_password: currentPassword,
+      new_password: newPassword
+    });
+  }
+
 }
